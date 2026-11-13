@@ -1,0 +1,185 @@
+name: Restore and verify complete AI handbook
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-guide.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ai-handbook-import
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.repository == 'AIPMAndy/chinese-international-student-ai-jobs' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+      - name: Require an unfinished migration
+        run: test ! -f reports/GITHUB-IMPORT.json
+      - name: Verify and restore original UTF-8 sources
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma, pathlib, shutil
+          root = pathlib.Path.cwd()
+          chunks = [root / '.migration' / f'source-{i:02d}.b64' for i in range(13)]
+          encoded = ''.join(p.read_text().strip() for p in chunks)
+          if len(encoded) != 201708:
+              raise SystemExit('Unexpected source transfer length')
+          raw = lzma.decompress(base64.b64decode(encoded, validate=True))
+          expected = '2006cba23a8729e309609f38d155e248c20e3801013b3b179fdf2bcc59ab6936'
+          if hashlib.sha256(raw).hexdigest() != expected:
+              raise SystemExit('Original source checksum mismatch: no source files written')
+          files = json.loads(raw)
+          if len(files) != 101:
+              raise SystemExit('Unexpected original source file count')
+          restored = 0
+          for name, text in files.items():
+              rel = pathlib.PurePosixPath(name)
+              if rel.is_absolute() or '..' in rel.parts or not isinstance(text, str):
+                  raise SystemExit('Unsafe archive entry')
+              if rel.parts[0] == '.github':
+                  continue
+              if any(p in ('.git', '.ssh', '.env') for p in rel.parts):
+                  raise SystemExit('Disallowed source entry')
+              dest = root / rel
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_text(text, encoding='utf-8')
+              restored += 1
+          shutil.rmtree(root / '.migration')
+          # Keep preserved historical verification notes separate from new evidence.
+          for name in ['reports/verification.json', 'reports/link-check.json', 'pdf/visual-review.json', 'pdf/build-report.json']:
+              old = root / name
+              if old.exists():
+                  dest = root / 'migration-history' / name
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.move(str(old), str(dest))
+          site = root / 'scripts/build_site.py'
+          text = site.read_text()
+          text = text.replace('https://andy-international-ai-jobs.andyaipm.chatgpt.site', 'https://aipmandy.github.io/chinese-international-student-ai-jobs')
+          site.write_text(text)
+          readme = root / 'README.md'
+          text = readme.read_text()
+          text = text.replace('GitHub：尚未发布；如获授权，将使用独立仓库 `AIPMAndy/chinese-international-student-ai-jobs`。', 'GitHub：独立公开仓库 [AIPMAndy/chinese-international-student-ai-jobs](https://github.com/AIPMAndy/chinese-international-student-ai-jobs)。')
+          text = text.replace('网站：静态源码在 `dist/`，发布地址以交付时实际验证结果为准。', '网站：完整静态文件在 `dist/`，由 GitHub Pages 工作流发布；部署是否成功以 Actions 结果为准。')
+          readme.write_text(text)
+          with (root / '.gitignore').open('a') as f:
+              f.write('\n# Build-only font files must never be distributed\n*.ttf\n*.ttc\n*.otf\n*.woff\n*.woff2\n')
+          print(json.dumps({'restored_utf8_files': restored, 'verified_source_json_sha256': expected}))
+          PY
+      - name: Install reproducible document and screenshot dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-core fonts-dejavu-core poppler-utils
+          python3 -m pip install reportlab fonttools pymupdf pypdf pillow playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Execute all three technical examples and risk tests
+        run: python3 examples/run_all.py
+      - name: Build the original website
+        run: python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+      - name: Capture actual desktop, mobile and verification pages
+        run: |
+          python3 - <<'PY'
+          import functools, http.server, pathlib, threading
+          from playwright.sync_api import sync_playwright
+          root = pathlib.Path.cwd()
+          (root / 'assets').mkdir(exist_ok=True)
+          server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root / 'dist')))
+          thread = threading.Thread(target=server.serve_forever, daemon=True)
+          thread.start()
+          origin = f'http://127.0.0.1:{server.server_port}'
+          try:
+              with sync_playwright() as p:
+                  browser = p.chromium.launch()
+                  page = browser.new_page(viewport={'width': 1440, 'height': 960}, device_scale_factor=1)
+                  page.goto(origin + '/', wait_until='networkidle')
+                  page.evaluate('document.fonts.ready')
+                  page.screenshot(path=str(root / 'assets/operation-home.jpg'), type='jpeg', quality=88)
+                  page.goto(origin + '/verification.html', wait_until='networkidle')
+                  page.screenshot(path=str(root / 'assets/operation-results.jpg'), type='jpeg', quality=88)
+                  mobile = browser.new_page(viewport={'width': 390, 'height': 844}, device_scale_factor=1, is_mobile=True, has_touch=True)
+                  mobile.goto(origin + '/', wait_until='networkidle')
+                  mobile.screenshot(path=str(root / 'assets/operation-mobile.jpg'), type='jpeg', quality=88)
+                  if mobile.evaluate('document.documentElement.scrollWidth > innerWidth + 2'):
+                      raise RuntimeError('Horizontal overflow in mobile homepage')
+                  browser.close()
+          finally:
+              server.shutdown()
+              server.server_close()
+          PY
+      - name: Build complete PDF and release downloads
+        run: |
+          python3 scripts/build_pdf.py
+          python3 scripts/package_release.py
+          python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+          python3 scripts/check_release.py
+          python3 scripts/check_pages_links.py --site dist --repo chinese-international-student-ai-jobs --required downloads/chinese-international-student-ai-jobs-guide.pdf --required downloads/templates.zip --required downloads/chinese-international-student-ai-jobs-source.zip
+      - name: Record fresh build evidence and rebuild final source package
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, zipfile
+          import fitz
+          root = pathlib.Path.cwd()
+          pdf = root / 'downloads/chinese-international-student-ai-jobs-guide.pdf'
+          doc = fitz.open(pdf)
+          if len(doc) < 70 or any(not p.get_text().strip() for p in doc):
+              raise SystemExit('Incomplete or blank PDF pages')
+          report = {
+              'repository': 'AIPMAndy/chinese-international-student-ai-jobs',
+              'source_commit': '${{ github.sha }}',
+              'source_json_sha256': '2006cba23a8729e309609f38d155e248c20e3801013b3b179fdf2bcc59ab6936',
+              'original_source_zip_sha256': '121224b84cb33707f57e792f354d1ed82ede0d4db83ea67bb0a2641f53316ab2',
+              'pdf_pages': len(doc),
+              'pdf_sha256': hashlib.sha256(pdf.read_bytes()).hexdigest(),
+              'html_pages': len(list((root / 'dist').rglob('*.html'))),
+              'examples_and_risk_tests': json.loads((root / 'reports/verification.json').read_text()),
+              'screenshots': ['assets/operation-home.jpg', 'assets/operation-mobile.jpg', 'assets/operation-results.jpg'],
+              'screenshots_method': 'Actual Chromium desktop/mobile rendering of this build; verification page contains fresh executed example results',
+              'pdf_visual_review': 'Pending rendered-page inspection; automated text checks are not a visual review',
+              'github_pages_deployment': 'Pending; source publication is not proof of a live website'
+          }
+          doc.close()
+          (root / 'reports/GITHUB-IMPORT.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
+          print(json.dumps({k: v for k, v in report.items() if k != 'examples_and_risk_tests'}, ensure_ascii=False, indent=2))
+          PY
+          python3 scripts/package_release.py
+          python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+          python3 scripts/check_release.py
+          python3 scripts/check_pages_links.py --site dist --repo chinese-international-student-ai-jobs --required downloads/chinese-international-student-ai-jobs-guide.pdf --required downloads/templates.zip --required downloads/chinese-international-student-ai-jobs-source.zip
+          python3 - <<'PY'
+          import pathlib, zipfile
+          root = pathlib.Path.cwd()
+          banned = {'.ttf', '.ttc', '.otf', '.woff', '.woff2'}
+          with zipfile.ZipFile(root / 'downloads/chinese-international-student-ai-jobs-source.zip') as z:
+              bad = [n for n in z.namelist() if pathlib.Path(n).suffix.lower() in banned or '/.git/' in n or '/.migration/' in n]
+              if bad:
+                  raise SystemExit(f'Unexpected private/build-only files: {bad}')
+          for a in (root / 'downloads').iterdir():
+              b = root / 'dist/downloads' / a.name
+              if a.is_file() and (not b.exists() or a.read_bytes() != b.read_bytes()):
+                  raise SystemExit(f'Download copy differs: {a.name}')
+          PY
+      - name: Publish reviewed-source release without rewriting history
+        run: |
+          git config user.name 'AI酋长Andy'
+          git config user.email '31501333+AIPMAndy@users.noreply.github.com'
+          git add -A
+          git add -f dist downloads
+          if git ls-files | grep -Ei '\.(ttf|ttc|otf|woff|woff2)$'; then
+            echo 'Refusing to publish standalone fonts'; exit 1
+          fi
+          git commit -m 'Publish complete AI jobs handbook with executed examples, PDF, templates and GitHub Pages site'
+          git push origin HEAD:main
+      - name: Retain independently reviewable PDF, screenshots and validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-published-evidence
+          if-no-files-found: warn
+          path: |
+            downloads/chinese-international-student-ai-jobs-guide.pdf
+            reports/GITHUB-IMPORT.json
+            reports/verification.json
+            assets/operation-*.jpg
+            pdf/build-report.json
