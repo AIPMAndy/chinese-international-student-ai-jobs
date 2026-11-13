@@ -1,0 +1,15 @@
+{
+  "example_version": "2026-11-13",
+  "run_at_utc": "2026-11-13T07:38:56.233815+00:00",
+  "python": "3.12.14",
+  "unit_tests": 18,
+  "real_http_checks": 14,
+  "deterministic_acceptance": "passed",
+  "commands": [
+    "python3 examples/01_ml_experiment/run.py",
+    "python3 examples/02_model_service/verify.py",
+    "python3 examples/03_grounded_retrieval/run.py",
+    "python3 -m unittest discover -s examples/tests -v"
+  ],
+  "scope": "Local standard-library teaching examples; no external model or live production system tested"
+}

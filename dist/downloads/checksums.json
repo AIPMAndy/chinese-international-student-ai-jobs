@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "artifacts": [
+    {
+      "file": "chinese-international-student-ai-jobs-guide.pdf",
+      "bytes": 973178,
+      "sha256": "f07ee347ff51ccb8e6a870cf6ed178065384262aa39937985cdd081682e14d0e"
+    },
+    {
+      "file": "templates.zip",
+      "bytes": 33559,
+      "sha256": "902b34024731049fd8de53351e4cec43d0bab4d3080e6a9626c1d5b95292f430"
+    },
+    {
+      "file": "chinese-international-student-ai-jobs-source.zip",
+      "bytes": 1613623,
+      "sha256": "c7cac484472eb6f32c98ed69cfba85dae1f645a2bb03c61c7fcb0031de42926f"
+    },
+    {
+      "file": "chinese-international-student-ai-jobs-website.zip",
+      "bytes": 3214931,
+      "sha256": "d151540a07918f414daf9e3c1cdb4d586382af5f3886b3817a22bd5a7941d2b2"
+    }
+  ]
+}

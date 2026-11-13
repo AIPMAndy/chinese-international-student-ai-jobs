@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "checked_at": "2026-11-13",
+  "jd_records": 18,
+  "jd_detail_readable": 16,
+  "regions": 19,
+  "templates": 14,
+  "html_pages": 52,
+  "original_source_url_placements_checked": 100,
+  "archives": [
+    {
+      "name": "templates.zip",
+      "members": 16
+    },
+    {
+      "name": "chinese-international-student-ai-jobs-source.zip",
+      "members": 150
+    },
+    {
+      "name": "chinese-international-student-ai-jobs-website.zip",
+      "members": 146
+    }
+  ],
+  "failures": [],
+  "status": "passed",
+  "external_links": "Primary source access statuses recorded in research; not a blanket assertion that every external URL is currently reachable."
+}

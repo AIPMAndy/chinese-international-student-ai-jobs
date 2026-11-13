@@ -1,0 +1,84 @@
+{
+  "checked_at": "2026-11-13",
+  "new_repository_candidate": "AIPMAndy/chinese-international-student-ai-jobs",
+  "candidate_api_status": "404 under authenticated AIPMAndy connection; not created by this task",
+  "local_reads": [
+    {
+      "repository": "how-to-get-offer",
+      "path": "README.md",
+      "read_at": "2026-11-13",
+      "sha256": "67212ba422cee86c22bc93b79d696bdd7cb8124e3d5c62142ae632aa5f8777fc",
+      "local_checkout_commit": "250e8fd427e98352eab64ff265de15431355a6a9",
+      "access": "read only"
+    },
+    {
+      "repository": "how-to-get-offer",
+      "path": "guides/12-role-playbooks.md",
+      "read_at": "2026-11-13",
+      "sha256": "384c96198c3fe1b649f4a377ce1f927607a75ad67b6889d322945b2cabc85d3c",
+      "local_checkout_commit": "250e8fd427e98352eab64ff265de15431355a6a9",
+      "access": "read only"
+    },
+    {
+      "repository": "how-to-get-offer",
+      "path": "examples/ops-to-ai.md",
+      "read_at": "2026-11-13",
+      "sha256": "176c032480c23a7afb1e592e35eae59e8d33cbe8ea64a43bcad2385d3dbc67d2",
+      "local_checkout_commit": "250e8fd427e98352eab64ff265de15431355a6a9",
+      "access": "read only"
+    },
+    {
+      "repository": "teach-rd-product-handbook",
+      "path": "README.md",
+      "read_at": "2026-11-13",
+      "sha256": "510dacab37d2842d243be090d95ae69ed974e2741e93be730df7f294815c9eb7",
+      "local_checkout_commit": "b459caca3a17125b5d294efdb746b51ae56cb416",
+      "access": "read only"
+    },
+    {
+      "repository": "teach-rd-product-handbook",
+      "path": "docs/curriculum.md",
+      "read_at": "2026-11-13",
+      "sha256": "eb483bffed9dca0943c0491fded0c81434a1404384130918acac4dc1e22eb491",
+      "local_checkout_commit": "b459caca3a17125b5d294efdb746b51ae56cb416",
+      "access": "read only"
+    },
+    {
+      "repository": "anthropic-claude-code-agent-handbook",
+      "path": "README.md",
+      "read_at": "2026-11-13",
+      "sha256": "745cf1ca9d4a4e28e9c47d137370ad11b9eaf1589ce0b6c5957bfedf92b2ce79",
+      "local_checkout_commit": "c3cfe8ab680ad9f1b3e9b325ce6b5e631d96f1c0",
+      "access": "read only"
+    },
+    {
+      "repository": "anthropic-claude-code-agent-handbook",
+      "path": "docs/02-agent-patterns.md",
+      "read_at": "2026-11-13",
+      "sha256": "a36d8d2968029926da2ea8cc0da709e9c70ec83cb2925efc50e4081bb193a29f",
+      "local_checkout_commit": "c3cfe8ab680ad9f1b3e9b325ce6b5e631d96f1c0",
+      "access": "read only"
+    },
+    {
+      "repository": "anthropic-claude-code-agent-handbook",
+      "path": "docs/05-evals-and-safety.md",
+      "read_at": "2026-11-13",
+      "sha256": "769727bfdd34142418f1777628ffa7f2a59bda7a414c3e938e8df385d5c93a8e",
+      "local_checkout_commit": "c3cfe8ab680ad9f1b3e9b325ce6b5e631d96f1c0",
+      "access": "read only"
+    }
+  ],
+  "remote_reads": [
+    {
+      "repository": "AIPMAndy/andy-product-skill",
+      "paths": [
+        "root directory",
+        "README.md",
+        "SKILL.md"
+      ],
+      "README_blob_sha": "888a8443b27a8512f4579394a20b741a9a8eb133",
+      "SKILL_blob_sha": "d947d6c0b69dc9c4369bf9311d5a2090a7cb054c"
+    }
+  ],
+  "other_projects_write_operations": 0
+}

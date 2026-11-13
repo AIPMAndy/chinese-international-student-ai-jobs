@@ -1,0 +1,51 @@
+{"id":"tr01","split":"train","label":"access","text":"I forgot my password and cannot sign in"}
+{"id":"tr02","split":"train","label":"access","text":"Please reset the account password"}
+{"id":"tr03","split":"train","label":"access","text":"The login code expired before I could enter"}
+{"id":"tr04","split":"train","label":"access","text":"Two factor authentication is blocking my login"}
+{"id":"tr05","split":"train","label":"access","text":"My account is locked after failed login attempts"}
+{"id":"tr06","split":"train","label":"access","text":"The invitation link to join the team expired"}
+{"id":"tr07","split":"train","label":"access","text":"I need permission to access the workspace"}
+{"id":"tr08","split":"train","label":"access","text":"Remove access for a former team member"}
+{"id":"tr09","split":"train","label":"access","text":"Change the email address used for authentication"}
+{"id":"tr10","split":"train","label":"access","text":"The single sign on authentication token is invalid"}
+{"id":"tr11","split":"train","label":"billing","text":"My credit card was charged twice"}
+{"id":"tr12","split":"train","label":"billing","text":"Please refund the duplicate payment"}
+{"id":"tr13","split":"train","label":"billing","text":"I need an invoice for the subscription charge"}
+{"id":"tr14","split":"train","label":"billing","text":"Cancel the paid subscription before renewal"}
+{"id":"tr15","split":"train","label":"billing","text":"The payment was declined by the bank"}
+{"id":"tr16","split":"train","label":"billing","text":"Update the billing address on my invoice"}
+{"id":"tr17","split":"train","label":"billing","text":"The tax amount on the receipt is wrong"}
+{"id":"tr18","split":"train","label":"billing","text":"Our monthly plan price changed unexpectedly"}
+{"id":"tr19","split":"train","label":"billing","text":"How do I change the payment card"}
+{"id":"tr20","split":"train","label":"billing","text":"The refund has not reached my bank account"}
+{"id":"tr21","split":"train","label":"technical","text":"The application crashes when I open a file"}
+{"id":"tr22","split":"train","label":"technical","text":"The screen is blank after the update"}
+{"id":"tr23","split":"train","label":"technical","text":"The export button returns a server error"}
+{"id":"tr24","split":"train","label":"technical","text":"The page loads slowly and freezes"}
+{"id":"tr25","split":"train","label":"technical","text":"Uploading a file causes a timeout"}
+{"id":"tr26","split":"train","label":"technical","text":"The search feature returns empty results"}
+{"id":"tr27","split":"train","label":"technical","text":"The browser tab consumes too much memory"}
+{"id":"tr28","split":"train","label":"technical","text":"A network error prevents syncing the document"}
+{"id":"tr29","split":"train","label":"technical","text":"The settings page is broken on mobile"}
+{"id":"tr30","split":"train","label":"technical","text":"The dashboard chart shows stale data after refresh"}
+{"id":"dv01","split":"dev","label":"access","text":"I cannot sign in because the password is wrong"}
+{"id":"dv02","split":"dev","label":"access","text":"My team invitation expired yesterday"}
+{"id":"dv03","split":"dev","label":"access","text":"Please grant permission for the workspace"}
+{"id":"dv04","split":"dev","label":"billing","text":"Send the invoice for my monthly payment"}
+{"id":"dv05","split":"dev","label":"billing","text":"The bank rejected my credit card payment"}
+{"id":"dv06","split":"dev","label":"billing","text":"I want a refund for this charge"}
+{"id":"dv07","split":"dev","label":"technical","text":"The mobile application crashes during export"}
+{"id":"dv08","split":"dev","label":"technical","text":"The document upload returns a timeout error"}
+{"id":"dv09","split":"dev","label":"technical","text":"The dashboard is blank after refresh"}
+{"id":"te01","split":"test","label":"access","text":"Reset my password so I can access the account"}
+{"id":"te02","split":"test","label":"access","text":"The authentication code is invalid"}
+{"id":"te03","split":"test","label":"access","text":"My colleague cannot join because permission is denied"}
+{"id":"te04","split":"test","label":"access","text":"I am a new employee and the door to my digital office is closed"}
+{"id":"te05","split":"test","label":"billing","text":"Why did you charge my card twice this month"}
+{"id":"te06","split":"test","label":"billing","text":"The subscription renewal invoice has the wrong address"}
+{"id":"te07","split":"test","label":"billing","text":"Please stop charging me after I cancel the paid plan"}
+{"id":"te08","split":"test","label":"billing","text":"I cannot access my refund receipt"}
+{"id":"te09","split":"test","label":"technical","text":"The screen remains blank after opening settings"}
+{"id":"te10","split":"test","label":"technical","text":"The export file download ends with a network error"}
+{"id":"te11","split":"test","label":"technical","text":"The invoice page spins forever"}
+{"id":"te12","split":"test","label":"technical","text":"The sign in form crashes with a server error"}

@@ -1,0 +1,75 @@
+{
+  "checked_at_utc": "2026-11-13T07:55:46.655649+00:00",
+  "method": "Managed Chromium through CUA; desktop plus same-origin narrow iframe rendering",
+  "mobile_limit": "Layout and controls verified; no physical phone or Safari test",
+  "checks": [
+    {
+      "id": "desktop_home",
+      "status": "passed",
+      "observed": "1363x936 viewport; no horizontal overflow; complete heading, actions and coverage counts"
+    },
+    {
+      "id": "jd_verified_filter",
+      "status": "passed",
+      "observed": "16 / 18"
+    },
+    {
+      "id": "jd_us_application_filter",
+      "status": "passed",
+      "observed": "1 / 18; Scale AI Software Engineer - New Grad"
+    },
+    {
+      "id": "jd_empty_filter",
+      "status": "passed",
+      "observed": "0 / 18"
+    },
+    {
+      "id": "self_check_unknown_eligibility",
+      "status": "passed",
+      "observed": "Confirm eligibility first; no automatic application recommendation"
+    },
+    {
+      "id": "self_check_no_programming",
+      "status": "passed",
+      "observed": "Build independent programming evidence before selecting a technical route"
+    },
+    {
+      "id": "full_text_search",
+      "status": "passed",
+      "observed": "加拿大 returns 4 relevant source-backed pages"
+    },
+    {
+      "id": "reading_state",
+      "status": "passed",
+      "observed": "aria-pressed true survives reload; test marker reset afterwards"
+    },
+    {
+      "id": "site_console",
+      "status": "passed",
+      "observed": "No site-origin warning/error in captured logs; extension metadata errors excluded"
+    },
+    {
+      "id": "mobile_home",
+      "status": "passed",
+      "observed": "390x844 same-origin iframe; document clientWidth=375 and scrollWidth=375"
+    },
+    {
+      "id": "mobile_navigation",
+      "status": "passed",
+      "observed": "Collapsed menu opens and navigates to jobs"
+    },
+    {
+      "id": "mobile_jobs",
+      "status": "passed",
+      "observed": "document clientWidth=375 and scrollWidth=375; US filter returns 3 / 18"
+    }
+  ],
+  "screenshots": [
+    "assets/operation-home.jpg",
+    "assets/operation-results.jpg",
+    "assets/operation-mobile.jpg"
+  ],
+  "production": "Not deployed. GitHub Pages is the formal target; repository creation is blocked by unavailable creation capability and login.",
+  "final_download_click": "Not completed: browser URL policy rejected final page observation. No alternate browser or direct network workaround used.",
+  "clipboard_copy": "Not verified interactively in final pass"
+}

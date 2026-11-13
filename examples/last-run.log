@@ -1,0 +1,27 @@
+{"project": "01_ml_experiment", "selected": {"alpha": 0.25, "bigrams": false}, "test": {"n": 12, "accuracy": 0.833333, "macro_f1": 0.832011}, "majority_macro_f1": 0.166667, "failures": 2}
+{"project": "02_model_service", "passed_checks": 14, "benchmark": {"n": 40, "p50_ms": 0.776, "p95_ms": 1.035}}
+{"project": "03_grounded_retrieval", "selected_threshold": 2.0, "test": {"n": 16, "answerable_n": 8, "unanswerable_n": 4, "injection_n": 4, "task_accuracy": 0.75, "retrieval_recall_at_3": 0.875, "answerable_coverage": 0.75, "answerable_correct_rate": 0.75, "unanswerable_refusal_rate": 0.5, "injection_refusal_rate": 1.0, "answered_quote_integrity": 1.0}, "failures": 4}
+test_class_averaging_and_zero_division (test_risks.ExperimentRisks.test_class_averaging_and_zero_division) ... ok
+test_dev_or_test_data_cannot_enter_train (test_risks.ExperimentRisks.test_dev_or_test_data_cannot_enter_train) ... ok
+test_invalid_metric_shape_rejected (test_risks.ExperimentRisks.test_invalid_metric_shape_rejected) ... ok
+test_missing_class_still_counts_in_macro_average (test_risks.ExperimentRisks.test_missing_class_still_counts_in_macro_average) ... ok
+test_normalized_duplicate_cannot_cross_splits (test_risks.ExperimentRisks.test_normalized_duplicate_cannot_cross_splits) ... ok
+test_serialization_does_not_change_prediction (test_risks.ExperimentRisks.test_serialization_does_not_change_prediction) ... ok
+test_unknown_words_are_flagged (test_risks.ExperimentRisks.test_unknown_words_are_flagged) ... ok
+test_vocabulary_is_fitted_only_on_train (test_risks.ExperimentRisks.test_vocabulary_is_fitted_only_on_train) ... ok
+test_correct_quote_can_still_answer_wrong_question (test_risks.RetrievalRisks.test_correct_quote_can_still_answer_wrong_question) ... ok
+test_duplicate_document_ids_rejected (test_risks.RetrievalRisks.test_duplicate_document_ids_rejected) ... ok
+test_empty_or_unseen_query_is_refused (test_risks.RetrievalRisks.test_empty_or_unseen_query_is_refused) ... ok
+test_literal_injection_rule_has_no_citation (test_risks.RetrievalRisks.test_literal_injection_rule_has_no_citation) ... ok
+test_missing_denominator_is_null_not_perfect (test_risks.RetrievalRisks.test_missing_denominator_is_null_not_perfect) ... ok
+test_quote_is_a_real_substring_of_cited_document (test_risks.RetrievalRisks.test_quote_is_a_real_substring_of_cited_document) ... ok
+test_batch_and_length_bounds (test_risks.ServiceInputRisks.test_batch_and_length_bounds) ... ok
+test_batch_order_is_preserved (test_risks.ServiceInputRisks.test_batch_order_is_preserved) ... ok
+test_numbers_and_booleans_are_not_text (test_risks.ServiceInputRisks.test_numbers_and_booleans_are_not_text) ... ok
+test_unknown_fields_are_rejected (test_risks.ServiceInputRisks.test_unknown_fields_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.003s
+
+OK
+ALL_EXAMPLES_ACCEPTED

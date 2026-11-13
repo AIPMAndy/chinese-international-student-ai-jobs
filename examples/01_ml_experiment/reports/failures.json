@@ -1,0 +1,28 @@
+[
+  {
+    "id": "te08",
+    "split": "test",
+    "label": "access",
+    "text": "I cannot access my refund receipt",
+    "uncalibrated_probabilities": {
+      "access": 0.518156,
+      "billing": 0.481414,
+      "technical": 0.000431
+    },
+    "known_token_count": 6,
+    "gold": "billing"
+  },
+  {
+    "id": "te11",
+    "split": "test",
+    "label": "billing",
+    "text": "The invoice page spins forever",
+    "uncalibrated_probabilities": {
+      "access": 0.033283,
+      "billing": 0.490608,
+      "technical": 0.476108
+    },
+    "known_token_count": 3,
+    "gold": "technical"
+  }
+]

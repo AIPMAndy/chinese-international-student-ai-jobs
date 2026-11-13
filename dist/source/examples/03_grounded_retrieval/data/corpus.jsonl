@@ -1,0 +1,8 @@
+{"id":"d01","title":"Dataset retention","text":"Training data in this fictional teaching lab must be deleted 30 days after an experiment ends. Store no personal information in the synthetic dataset."}
+{"id":"d02","title":"Evaluation before release","text":"Before a model release, run held-out evaluation, report macro F1 and per-class recall, and inspect at least five failure examples. Do not choose thresholds using the test split."}
+{"id":"d03","title":"Deployment rollback","text":"For a failed deployment in this fictional lab, restore the previous model artifact, run the health check, and record the rollback reason in the release log."}
+{"id":"d04","title":"Bug report","text":"A bug report must contain a minimal reproduction command, the expected output, the actual output, the Python version, and a redacted error log."}
+{"id":"d05","title":"Credential handling","text":"Credentials must stay outside Git. Use an environment variable for a local experiment. If a credential is exposed, revoke it and replace it before continuing."}
+{"id":"d06","title":"Compute budget","text":"The fictional teaching lab allows two GPU hours for each experiment. Stop the run at the budget limit and record both completed and failed trials."}
+{"id":"d07","title":"Peer review","text":"Ask one peer to reproduce an experiment from a clean checkout. The peer must record the commit identifier and any mismatch between documented and observed results."}
+{"id":"d08","title":"Data split policy","text":"Split data before fitting the vocabulary or choosing a threshold. Group records from the same customer into one split. Use development data for selection and test data for the final estimate."}

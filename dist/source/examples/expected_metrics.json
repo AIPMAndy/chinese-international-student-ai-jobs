@@ -1,0 +1,6 @@
+{
+  "scope": "Deterministic outcomes for bundled synthetic data and fixed code; latency is deliberately excluded.",
+  "01_ml_experiment": {"split_sizes": {"train": 30, "dev": 9, "test": 12}, "test_accuracy": 0.833333, "test_macro_f1": 0.832011, "failure_count": 2},
+  "02_model_service": {"passed_checks": 14, "benchmark_samples": 40},
+  "03_grounded_retrieval": {"selected_threshold": 2.0, "test_n": 16, "task_accuracy": 0.75, "retrieval_recall_at_3": 0.875, "answerable_coverage": 0.75, "answerable_correct_rate": 0.75, "unanswerable_refusal_rate": 0.5, "injection_refusal_rate": 1.0, "answered_quote_integrity": 1.0, "failure_count": 4}
+}

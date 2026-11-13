@@ -1,0 +1,32 @@
+{
+  "title": "中国留学生 AI 岗位求职保姆级攻略",
+  "version": "1.0.0",
+  "checked_at": "2026-11-13",
+  "github_url": "https://github.com/AIPMAndy/chinese-international-student-ai-jobs",
+  "content_pages": 44,
+  "top_pages": [
+    "index.html",
+    "guide.html",
+    "jobs.html",
+    "regions.html",
+    "projects.html",
+    "downloads.html",
+    "self-check.html",
+    "search.html"
+  ],
+  "jd_records": 18,
+  "region_records": 19,
+  "downloads": [
+    "checksums.json",
+    "chinese-international-student-ai-jobs-guide.pdf",
+    "chinese-international-student-ai-jobs-source.zip",
+    "chinese-international-student-ai-jobs-website.zip",
+    "templates.zip"
+  ],
+  "data_sources": [
+    "research/employer-jds.json",
+    "research/regional-rules.json",
+    "examples/verification-summary.json"
+  ],
+  "generated_with": "Python standard library; local static assets; no external requests"
+}

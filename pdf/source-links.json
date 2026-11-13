@@ -1,0 +1,19 @@
+{
+  "strategy": "Included chapters use internal PDF destinations; other relative source targets are readable paths inside the supplied source ZIP. No unpublished repository or website URLs are generated.",
+  "external_source_urls": [],
+  "pending_source_http_checks": 0,
+  "bundle_paths": [
+    "examples/01_ml_experiment/README.md",
+    "examples/01_ml_experiment/reports/evaluation.json",
+    "examples/02_model_service/README.md",
+    "examples/02_model_service/reports/verification.json",
+    "examples/03_grounded_retrieval/README.md",
+    "examples/03_grounded_retrieval/reports/evaluation.json",
+    "examples/03_grounded_retrieval/reports/failures.json",
+    "examples/CONTRIBUTIONS.template.md",
+    "examples/DATA-LICENSE.md",
+    "examples/README.md",
+    "examples/expected_metrics.json"
+  ],
+  "local_source_files": "all present"
+}

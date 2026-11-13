@@ -1,34 +1,36 @@
-name: Deploy AI guide to GitHub Pages
+name: Deploy verified guide to GitHub Pages
+
 on:
   push:
     branches: [main]
-    paths: ['dist/**', '.github/workflows/pages.yml']
   workflow_dispatch:
+
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
 concurrency:
   group: github-pages
   cancel-in-progress: false
+
 jobs:
   deploy:
     if: github.repository == 'AIPMAndy/chinese-international-student-ai-jobs' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out the committed handbook
+      - name: Check out the committed project
         uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-      - name: Verify complete website and downloadable files
-        run: |
-          python3 scripts/check_pages_links.py --site dist --repo chinese-international-student-ai-jobs --required downloads/chinese-international-student-ai-jobs-guide.pdf --required downloads/templates.zip --required downloads/chinese-international-student-ai-jobs-source.zip
+      - name: Validate the committed static site and downloads
+        run: python3 scripts/check_pages_links.py --require downloads/chinese-international-student-ai-jobs-guide.pdf --require downloads/templates.zip --require downloads/chinese-international-student-ai-jobs-source.zip
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload verified static website
+      - name: Upload the verified static site
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist

@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "checked_at_utc": "2026-11-13T16:10:57.010222+00:00",
+  "repository": "AIPMAndy/chinese-international-student-ai-jobs",
+  "github_read_result": "Confirmed accessible public repository with push permission; complete content upload pending",
+  "formal_host": "GitHub Pages",
+  "repository_published": false,
+  "website_published": false,
+  "local_content_complete": true,
+  "local_artifacts": [
+    "PDF",
+    "source ZIP",
+    "templates ZIP",
+    "complete website ZIP"
+  ],
+  "remaining_action": "Upload the complete prepared tree to the existing repository, run its Pages workflow and verify the actual site and downloads. No other repository is in scope.",
+  "repository_exists": true,
+  "repository_public": true,
+  "repository_writable": true
+}

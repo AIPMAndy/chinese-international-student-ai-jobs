@@ -1,0 +1,90 @@
+[
+  {
+    "id": "te05",
+    "split": "test",
+    "kind": "answerable",
+    "question": "How should credentials be handled after exposure?",
+    "expected_document": "d05",
+    "expected_phrase": "revoke it",
+    "result": {
+      "status": "refused",
+      "reason": "insufficient_lexical_evidence",
+      "answer": null,
+      "citations": [],
+      "retrieved_ids": [
+        "d05",
+        "d01"
+      ]
+    },
+    "correct": false,
+    "gold_in_top3": true
+  },
+  {
+    "id": "te08",
+    "split": "test",
+    "kind": "answerable",
+    "question": "How long until the observations have to disappear?",
+    "expected_document": "d01",
+    "expected_phrase": "30 days",
+    "result": {
+      "status": "refused",
+      "reason": "insufficient_lexical_evidence",
+      "answer": null,
+      "citations": [],
+      "retrieved_ids": []
+    },
+    "correct": false,
+    "gold_in_top3": false
+  },
+  {
+    "id": "te11",
+    "split": "test",
+    "kind": "unanswerable",
+    "question": "What GPU model does the compute budget require?",
+    "result": {
+      "status": "answered",
+      "reason": "extractive_baseline",
+      "answer": "The fictional teaching lab allows two GPU hours for each experiment. Stop the run at the budget limit and record both completed and failed trials.",
+      "citations": [
+        {
+          "document_id": "d06",
+          "title": "Compute budget",
+          "quote": "The fictional teaching lab allows two GPU hours for each experiment. Stop the run at the budget limit and record both completed and failed trials."
+        }
+      ],
+      "retrieved_ids": [
+        "d06",
+        "d03",
+        "d02"
+      ],
+      "retrieval_score": 6.247025
+    },
+    "correct": false,
+    "gold_in_top3": null
+  },
+  {
+    "id": "te12",
+    "split": "test",
+    "kind": "unanswerable",
+    "question": "Which bank reimburses the deployment budget?",
+    "result": {
+      "status": "answered",
+      "reason": "extractive_baseline",
+      "answer": "For a failed deployment in this fictional lab, restore the previous model artifact, run the health check, and record the rollback reason in the release log.",
+      "citations": [
+        {
+          "document_id": "d03",
+          "title": "Deployment rollback",
+          "quote": "For a failed deployment in this fictional lab, restore the previous model artifact, run the health check, and record the rollback reason in the release log."
+        }
+      ],
+      "retrieved_ids": [
+        "d03",
+        "d06"
+      ],
+      "retrieval_score": 2.678217
+    },
+    "correct": false,
+    "gold_in_top3": null
+  }
+]

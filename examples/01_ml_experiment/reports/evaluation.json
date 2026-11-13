@@ -1,0 +1,613 @@
+{
+  "example_version": "2026-11-13",
+  "run_at_utc": "2026-11-13T07:38:55.305605+00:00",
+  "python": "3.12.14",
+  "data_sha256": "0fb9e85a2f43b87964df0163f3ac97e391cbce24d5788750899fc5d60e7fa69c",
+  "data_provenance": "hand-authored synthetic teaching data; no user/customer records",
+  "split_sizes": {
+    "train": 30,
+    "dev": 9,
+    "test": 12
+  },
+  "selection_policy": "dev macro F1; fixed alpha grid; ties choose first; test never used for selection",
+  "selected": {
+    "alpha": 0.25,
+    "bigrams": false
+  },
+  "validation_runs": [
+    {
+      "alpha": 0.25,
+      "bigrams": false,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    },
+    {
+      "alpha": 1.0,
+      "bigrams": false,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    },
+    {
+      "alpha": 2.0,
+      "bigrams": false,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.25,
+      "bigrams": true,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    },
+    {
+      "alpha": 1.0,
+      "bigrams": true,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    },
+    {
+      "alpha": 2.0,
+      "bigrams": true,
+      "dev": {
+        "n": 9,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class": {
+          "access": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "billing": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "technical": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_gold_rows_predicted_columns": {
+          "access": {
+            "access": 3,
+            "billing": 0,
+            "technical": 0
+          },
+          "billing": {
+            "access": 0,
+            "billing": 3,
+            "technical": 0
+          },
+          "technical": {
+            "access": 0,
+            "billing": 0,
+            "technical": 3
+          }
+        }
+      }
+    }
+  ],
+  "test": {
+    "n": 12,
+    "accuracy": 0.833333,
+    "macro_f1": 0.832011,
+    "per_class": {
+      "access": {
+        "support": 4,
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1": 0.888889
+      },
+      "billing": {
+        "support": 4,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      "technical": {
+        "support": 4,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.857143
+      }
+    },
+    "confusion_gold_rows_predicted_columns": {
+      "access": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      },
+      "billing": {
+        "access": 1,
+        "billing": 3,
+        "technical": 0
+      },
+      "technical": {
+        "access": 0,
+        "billing": 1,
+        "technical": 3
+      }
+    }
+  },
+  "majority_baseline": {
+    "n": 12,
+    "accuracy": 0.333333,
+    "macro_f1": 0.166667,
+    "per_class": {
+      "access": {
+        "support": 4,
+        "precision": 0.333333,
+        "recall": 1.0,
+        "f1": 0.5
+      },
+      "billing": {
+        "support": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "technical": {
+        "support": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "confusion_gold_rows_predicted_columns": {
+      "access": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      },
+      "billing": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      },
+      "technical": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      }
+    }
+  },
+  "ablation_remove_all_features": {
+    "n": 12,
+    "accuracy": 0.333333,
+    "macro_f1": 0.166667,
+    "per_class": {
+      "access": {
+        "support": 4,
+        "precision": 0.333333,
+        "recall": 1.0,
+        "f1": 0.5
+      },
+      "billing": {
+        "support": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "technical": {
+        "support": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "confusion_gold_rows_predicted_columns": {
+      "access": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      },
+      "billing": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      },
+      "technical": {
+        "access": 4,
+        "billing": 0,
+        "technical": 0
+      }
+    }
+  },
+  "predictions": [
+    {
+      "id": "te01",
+      "split": "test",
+      "label": "access",
+      "text": "Reset my password so I can access the account",
+      "uncalibrated_probabilities": {
+        "access": 0.998096,
+        "billing": 0.001889,
+        "technical": 1.5e-05
+      },
+      "known_token_count": 7,
+      "gold": "access"
+    },
+    {
+      "id": "te02",
+      "split": "test",
+      "label": "access",
+      "text": "The authentication code is invalid",
+      "uncalibrated_probabilities": {
+        "access": 0.994235,
+        "billing": 0.002126,
+        "technical": 0.00364
+      },
+      "known_token_count": 5,
+      "gold": "access"
+    },
+    {
+      "id": "te03",
+      "split": "test",
+      "label": "access",
+      "text": "My colleague cannot join because permission is denied",
+      "uncalibrated_probabilities": {
+        "access": 0.99557,
+        "billing": 0.003914,
+        "technical": 0.000516
+      },
+      "known_token_count": 5,
+      "gold": "access"
+    },
+    {
+      "id": "te04",
+      "split": "test",
+      "label": "access",
+      "text": "I am a new employee and the door to my digital office is closed",
+      "uncalibrated_probabilities": {
+        "access": 0.980279,
+        "billing": 0.002312,
+        "technical": 0.017409
+      },
+      "known_token_count": 7,
+      "gold": "access"
+    },
+    {
+      "id": "te05",
+      "split": "test",
+      "label": "billing",
+      "text": "Why did you charge my card twice this month",
+      "uncalibrated_probabilities": {
+        "access": 0.003638,
+        "billing": 0.996034,
+        "technical": 0.000327
+      },
+      "known_token_count": 4,
+      "gold": "billing"
+    },
+    {
+      "id": "te06",
+      "split": "test",
+      "label": "billing",
+      "text": "The subscription renewal invoice has the wrong address",
+      "uncalibrated_probabilities": {
+        "access": 3.3e-05,
+        "billing": 0.999948,
+        "technical": 1.8e-05
+      },
+      "known_token_count": 8,
+      "gold": "billing"
+    },
+    {
+      "id": "te07",
+      "split": "test",
+      "label": "billing",
+      "text": "Please stop charging me after I cancel the paid plan",
+      "uncalibrated_probabilities": {
+        "access": 0.027975,
+        "billing": 0.964828,
+        "technical": 0.007197
+      },
+      "known_token_count": 7,
+      "gold": "billing"
+    },
+    {
+      "id": "te08",
+      "split": "test",
+      "label": "access",
+      "text": "I cannot access my refund receipt",
+      "uncalibrated_probabilities": {
+        "access": 0.518156,
+        "billing": 0.481414,
+        "technical": 0.000431
+      },
+      "known_token_count": 6,
+      "gold": "billing"
+    },
+    {
+      "id": "te09",
+      "split": "test",
+      "label": "technical",
+      "text": "The screen remains blank after opening settings",
+      "uncalibrated_probabilities": {
+        "access": 0.002577,
+        "billing": 0.000931,
+        "technical": 0.996492
+      },
+      "known_token_count": 5,
+      "gold": "technical"
+    },
+    {
+      "id": "te10",
+      "split": "test",
+      "label": "technical",
+      "text": "The export file download ends with a network error",
+      "uncalibrated_probabilities": {
+        "access": 6.6e-05,
+        "billing": 2.5e-05,
+        "technical": 0.999909
+      },
+      "known_token_count": 6,
+      "gold": "technical"
+    },
+    {
+      "id": "te11",
+      "split": "test",
+      "label": "billing",
+      "text": "The invoice page spins forever",
+      "uncalibrated_probabilities": {
+        "access": 0.033283,
+        "billing": 0.490608,
+        "technical": 0.476108
+      },
+      "known_token_count": 3,
+      "gold": "technical"
+    },
+    {
+      "id": "te12",
+      "split": "test",
+      "label": "technical",
+      "text": "The sign in form crashes with a server error",
+      "uncalibrated_probabilities": {
+        "access": 0.024984,
+        "billing": 0.000221,
+        "technical": 0.974795
+      },
+      "known_token_count": 7,
+      "gold": "technical"
+    }
+  ],
+  "failures": [
+    {
+      "id": "te08",
+      "split": "test",
+      "label": "access",
+      "text": "I cannot access my refund receipt",
+      "uncalibrated_probabilities": {
+        "access": 0.518156,
+        "billing": 0.481414,
+        "technical": 0.000431
+      },
+      "known_token_count": 6,
+      "gold": "billing"
+    },
+    {
+      "id": "te11",
+      "split": "test",
+      "label": "billing",
+      "text": "The invoice page spins forever",
+      "uncalibrated_probabilities": {
+        "access": 0.033283,
+        "billing": 0.490608,
+        "technical": 0.476108
+      },
+      "known_token_count": 3,
+      "gold": "technical"
+    }
+  ],
+  "limitations": [
+    "Tiny synthetic dataset",
+    "No real-world generalization claim",
+    "No confidence calibration",
+    "Normalized duplicate guard does not detect semantic or author leakage"
+  ]
+}

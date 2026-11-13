@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+tmp/
+validation/pdf-pages/
+validation/pdf-contact-sheets/
+*.tar.gz
+.openai/
+

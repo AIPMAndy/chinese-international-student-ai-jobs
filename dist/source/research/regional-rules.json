@@ -1,0 +1,530 @@
+{
+  "title": "中国留学生 AI 岗位求职：地区规则核验表",
+  "author": "AI 酋长 Andy",
+  "version": "2026.11.13",
+  "checked_at": "2026-11-13",
+  "scope": "19 个地区的代表性毕业/求职资格调查；非洲、南美洲不纳入。本表不等于穷尽其余国家，也不判定个人一定获批。",
+  "regions": [
+    {
+      "id": "US",
+      "continent": "北美",
+      "region": "美国",
+      "graduate_route": "F-1 OPT / STEM OPT",
+      "verified_summary": "官方 DHS 概览列普通 OPT 最长 12 个月，符合条件的 STEM OPT 可延长 24 个月；工作须与所学专业直接相关，STEM 雇主须加入 E-Verify。",
+      "application_clock": "把 I-20 项目结束日、DSO 推荐日、I-765 收件期限与 EAD 起止日分开核对。",
+      "employer_checks": [
+        "此职位是否接受当前 OPT，以及未来是否提供身份支持",
+        "STEM 训练计划、雇主主体和实际工作地点能否满足要求",
+        "JD 中 citizenship、clearance、export-control 条件是否适用"
+      ],
+      "uncertainty": "USCIS 具体页面本轮返回 403，因此不在本册给出精细申请/失业天数结论。DHS 概览不能替代个案许可及最新表格说明。",
+      "verification_status": "部分原文核实，精细期限待复核",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "DHS F-1 practical training overview",
+          "url": "https://studyinthestates.dhs.gov/assets/SEVP_PracticalTrainingOverview_1-pager.pdf",
+          "access": "官方 PDF 已打开"
+        },
+        {
+          "title": "USCIS OPT",
+          "url": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students",
+          "access": "打开返回 403；仅作复核入口"
+        }
+      ]
+    },
+    {
+      "id": "CA",
+      "continent": "北美",
+      "region": "加拿大",
+      "graduate_route": "PGWP",
+      "verified_summary": "PGWP 要求项目及学校具备资格，通常须在完成学业确认后 180 天内申请。学士、硕士、博士要求语言四项 CLB/NCLC 7，免专业领域限制；其他项目另查语言与 CIP 条件。",
+      "application_clock": "记录完成学业通知日、学签有效日、PGWP 申请日及学习许可申请日期。",
+      "employer_checks": [
+        "岗位要求的工作许可期限能否覆盖入职和合同",
+        "学位与非学位项目不能按同一 PGWP 条件填写",
+        "雇主是否明确排除未来需要支持的申请人"
+      ],
+      "uncertainty": "项目名称含 AI 不等于 PGWP 合格；DLI、授课形式、CIP 和申请日期会改变判断。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "IRCC PGWP eligibility",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+          "access": "正文已打开，页面日期 2026-06-24"
+        },
+        {
+          "title": "IRCC field of study",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+          "access": "官方搜索结果已核；专业清单须临投前重查"
+        }
+      ]
+    },
+    {
+      "id": "GB",
+      "continent": "欧洲",
+      "region": "英国",
+      "graduate_route": "Graduate visa",
+      "verified_summary": "非博士 Graduate 申请在 2026-12-31 或之前为 2 年，2027-01-01 起为 18 个月；博士为 3 年。需在英国、满足课程条件，并在 Student 许可到期前申请。",
+      "application_clock": "以申请日期判断 2 年或 18 个月，不用毕业典礼日期代替；先确认学校完成通知。",
+      "employer_checks": [
+        "职位是否接受 Graduate 身份入职",
+        "后续 Skilled Worker 支持是否明确",
+        "毕业范围、驻地及远程区域是否符合"
+      ],
+      "uncertainty": "Graduate 不能延期；能否转其他许可须独立审查。雇主有 sponsor licence 也不表示每个岗位愿意担保。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "GOV.UK Graduate visa",
+          "url": "https://www.gov.uk/graduate-visa",
+          "access": "正文已打开"
+        },
+        {
+          "title": "Appendix Graduate",
+          "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate",
+          "access": "官方搜索原文核对 GR 8.1"
+        }
+      ]
+    },
+    {
+      "id": "IE",
+      "continent": "欧洲",
+      "region": "爱尔兰",
+      "graduate_route": "Third Level Graduate Programme / Stamp 1G",
+      "verified_summary": "符合条件的 NFQ Level 8 毕业生可获 12 个月；Level 9 及以上先获 12 个月，满足条件可再续 12 个月。毕业生 Stamp 1G 可全职受雇，不能据此自雇经营。",
+      "application_clock": "须持有效 Stamp 2/登记卡，并在收到学位通知后 6 个月内申请；记录累计学生许可年限。",
+      "employer_checks": [
+        "在 1G 到期前是否需要就业许可",
+        "该职位、雇主与合同是否满足后续许可类别",
+        "毕业生项目接受的学位等级和入职日"
+      ],
+      "uncertainty": "第二年不是自动获得，需证实求职等活动；不能把所有硕士直接写成一次性 24 个月。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "ISD Third Level Graduate Programme",
+          "url": "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+          "access": "正文已打开"
+        },
+        {
+          "title": "ISD Immigration permission stamps",
+          "url": "https://www.irishimmigration.ie/registering-your-immigration-permission/information-on-registering/immigration-permission-stamps/",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "DE",
+      "continent": "欧洲",
+      "region": "德国",
+      "graduate_route": "德国毕业后求职居留",
+      "verified_summary": "德国高校毕业的第三国人士可申请最长 18 个月的求职居留；有合适工作后再核实相应工作居留或 EU Blue Card 路径。",
+      "application_clock": "毕业前预约当地外管局，核对现有居留到期日与完成学业证明。",
+      "employer_checks": [
+        "职位工作语言及团队沟通语言",
+        "实际德国雇主实体、工作地点和合同",
+        "所选工作居留的职位/资格条件"
+      ],
+      "uncertainty": "本项适用于德国毕业场景；持其他欧洲国家学位或居留不能直接套用。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Make it in Germany: after graduation",
+          "url": "https://www.make-it-in-germany.com/en/staying-in-germany-after-studies",
+          "access": "官方正文已打开（原页面带时间参数）"
+        }
+      ]
+    },
+    {
+      "id": "FR",
+      "continent": "欧洲",
+      "region": "法国",
+      "graduate_route": "Recherche d’emploi / création d’entreprise",
+      "verified_summary": "符合指定法国学历条件者可申请 1 年求职/创业居留。该路径受雇工作须与学习相关并满足当期薪酬要求，不能理解为任意工作许可。",
+      "application_clock": "区分仍在法国与毕业后已离境情形；前者核对毕业最近 12 个月、学生居留到期前的申请。",
+      "employer_checks": [
+        "学历是否属于官方列明范围",
+        "职责与学历相关性及当期薪酬门槛",
+        "合同类型和后续转换居留的条件"
+      ],
+      "uncertainty": "普通学士不能一律套用硕士等值路径；门槛金额会变，不将本册变成固定薪资计算器。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Service Public F17319",
+          "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17319",
+          "access": "正文已打开，官方核验日 2026-06-01"
+        }
+      ]
+    },
+    {
+      "id": "NL",
+      "continent": "欧洲",
+      "region": "荷兰",
+      "graduate_route": "Orientation year / Zoekjaar",
+      "verified_summary": "符合条件者可申请 1 年 orientation year，不能延期；通常需在相应毕业或研究完成后 3 年内申请。境外学历路径限指定条件，境外普通学士不能直接套用。",
+      "application_clock": "记录毕业日、申请日；境外院校排名须对应毕业时且满足 IND 规则。",
+      "employer_checks": [
+        "该职位是否接受 orientation year",
+        "后续雇主及高技术移民路径要求",
+        "英语/荷兰语要求与实际办公地"
+      ],
+      "uncertainty": "不要以“名校毕业”替代指定院校、学位层级和语言/学历认证核验。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "IND orientation year",
+          "url": "https://ind.nl/en/residence-permits/work/residence-permit-for-orientation-year",
+          "access": "正文已打开，页面更新 2026-10-07"
+        },
+        {
+          "title": "IND FAQ",
+          "url": "https://ind.nl/en/service-contact/frequently-asked-questions",
+          "access": "官方搜索原文核到境外学士限制"
+        }
+      ]
+    },
+    {
+      "id": "CH",
+      "continent": "欧洲",
+      "region": "瑞士",
+      "graduate_route": "瑞士高校毕业后求职期",
+      "verified_summary": "瑞士高校毕业的第三国人士有 6 个月寻找符合资历工作的期限；录用豁免本地/EU 优先原则仍要求工作具有较高科学或经济利益。",
+      "application_clock": "从课程/培训结束时间核对 6 个月及州主管机关申请要求。",
+      "employer_checks": [
+        "雇主是否愿意向所在州申请工作许可",
+        "职责是否满足科学或经济利益条件",
+        "职位是否要求既有瑞士/EU 工作资格"
+      ],
+      "uncertainty": "有 Offer 不等于可直接开工；其他国家居留不能自动赋予瑞士工作权。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "SEM Working FAQ",
+          "url": "https://www.sem.admin.ch/en/faq-working",
+          "access": "正文已打开，页面日期 2026-07-05"
+        }
+      ]
+    },
+    {
+      "id": "SE",
+      "continent": "欧洲",
+      "region": "瑞典",
+      "graduate_route": "完成高等教育后求职居留",
+      "verified_summary": "完成至少两个学期的合格高教课程后可按条件申请；本科/硕士最长 1 年，博士可为 1 年至 18 个月。须满足资金等条件。",
+      "application_clock": "现有高教居留到期前申请；完成全部课程并通过与只完成必修不同。",
+      "employer_checks": [
+        "职位要求的工作许可转换路径",
+        "完成学历证明和入职时间能否衔接",
+        "岗位语言与地点要求"
+      ],
+      "uncertainty": "博士与硕士期限不同；不能用旧版“所有人都是 12 个月”覆盖当前规则。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Swedish Migration Agency after studies",
+          "url": "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "FI",
+      "continent": "欧洲",
+      "region": "芬兰",
+      "graduate_route": "毕业/研究后求职或创业居留",
+      "verified_summary": "符合芬兰学位/研究条件者可申请最长 2 年求职或创业许可；一般须在原学习/研究许可到期后 5 年内申请，获批许可含不受限制的工作权。",
+      "application_clock": "在芬兰申请延续许可要在当前许可到期前递交；境外首次申请与境内续签流程分开。",
+      "employer_checks": [
+        "职位是否接受当前居留和可入职日",
+        "未来到期时需要的许可路径",
+        "技术团队工作语言及现场要求"
+      ],
+      "uncertainty": "需满足资金与既往学习/研究类别条件；并非任意境外学历持有人均可申请。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Migri permit to look for work",
+          "url": "https://migri.fi/en/residence-permit-to-look-for-work",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "NO",
+      "continent": "欧洲",
+      "region": "挪威",
+      "graduate_route": "当地毕业生/研究者求职居留",
+      "verified_summary": "符合 UDI 类别的当地毕业生或研究者可申请最长 1 年求职居留，期间可受雇工作，但不能自雇经营。",
+      "application_clock": "现有许可到期前申请；UDI 建议至少提前 1 个月，另核资金要求。",
+      "employer_checks": [
+        "职位是否可衔接 skilled worker 路径",
+        "工作地点、工时和雇主合同",
+        "毕业完成证明是否已具备"
+      ],
+      "uncertainty": "官方页要求按国籍和当前许可类别选择情形；本册不把其视为普遍求职签证。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "UDI Job seekers",
+          "url": "https://www.udi.no/en/want-to-apply/work-immigration/job-seekers/",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "SG",
+      "continent": "亚洲",
+      "region": "新加坡",
+      "graduate_route": "合格 IHL 毕业生 LTVP / 雇主工作准证",
+      "verified_summary": "合格本地 IHL 毕业生可申请一年不可续的求职 LTVP。EP 另查年龄相关薪资门槛及 COMPASS；不能把求职停留许可当成某岗位已获工作授权。",
+      "application_clock": "记录 Student’s Pass 注销日、求职停留到期日和雇主拟申请日期。EP 新申请 2027-01-01 起适用新门槛。",
+      "employer_checks": [
+        "由哪个新加坡实体申请何种工作准证",
+        "雇主是否用 SAT 核查年龄/行业/COMPASS",
+        "职位对本地工作权和未来支持的说明"
+      ],
+      "uncertainty": "EP 最低薪资按年龄和金融/非金融行业变化。2026 的数额不能直接用于 2027 申请。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "ICA IHL graduate seeking employment",
+          "url": "https://www.ica.gov.sg/information-and-e-services/long-term-visit-and-study/long-term-visit-pass/long-term-visit-pass-application-renewal/graduate-from-an-institute-of-higher-learning-seeking-employment-in-singapore",
+          "access": "正文已打开，更新 2026-10-29"
+        },
+        {
+          "title": "MOM EP eligibility",
+          "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+          "access": "正文已打开，更新 2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "JP",
+      "continent": "亚洲",
+      "region": "日本",
+      "graduate_route": "持续求职的特定活动 / 就劳在留资格",
+      "verified_summary": "入管官方索引说明：符合毕业前持续求职、学校推荐等条件者，可转 6 个月特定活动，并可续一次。技术岗位入职还需核对相应就劳在留资格。",
+      "application_clock": "在留到期前向学校及入管核查；毕业、内定、入职三日期分别记录。",
+      "employer_checks": [
+        "新卒/既卒/中途的毕业范围",
+        "日语、英语和实际工作语言",
+        "职责与拟申请就劳资格是否匹配"
+      ],
+      "uncertainty": "本轮官方正文打开返回 403，仅核到官方检索原文；地方项目第二年例外和个案材料待复核。",
+      "verification_status": "仅官方索引核实，正文访问受限",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "ISA job search after graduation",
+          "url": "https://www.moj.go.jp/isa/publications/materials/nyukan_nyukan84.html",
+          "access": "官方检索原文可读；打开返回 403"
+        },
+        {
+          "title": "ISA designated activities for graduates",
+          "url": "https://www.moj.go.jp/isa/applications/status/designatedactivities14.html",
+          "access": "官方检索原文可读；打开返回 403"
+        },
+        {
+          "title": "ISA immigration FAQ",
+          "url": "https://www.moj.go.jp/isa/immigration/faq/kanri_qa.html",
+          "access": "官方检索原文可读；打开返回 403"
+        }
+      ]
+    },
+    {
+      "id": "HK",
+      "continent": "亚洲",
+      "region": "中国香港",
+      "graduate_route": "IANG",
+      "verified_summary": "符合学历条件的非本地毕业生，毕业后 6 个月内申请属应届，申请时不要求已有 Offer，可按条件获 24 个月；超过 6 个月的非应届申请须已有合格工作。",
+      "application_clock": "以毕业证书日期核对 6 个月；未拿证书时核查院校证明是否符合要求。",
+      "employer_checks": [
+        "职位是否接受 IANG 或需要其他来港工作安排",
+        "学历项目是否属于 IANG 合格范围",
+        "合同地点及实际任职实体"
+      ],
+      "uncertainty": "IANG 的“应届”是入境安排分类，不等同每家企业的校招毕业窗口；内地与香港工作资格分开。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Hong Kong Immigration IANG",
+          "url": "https://www.immd.gov.hk/eng/services/visas/IANG.html",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "KR",
+      "continent": "亚洲",
+      "region": "韩国",
+      "graduate_route": "D-10 求职 / 后续就职资格",
+      "verified_summary": "法务部 2025-12-02 公告称韩国本地大学外国毕业生 D-10 求职期可最长 3 年、每次延 1 年；另一政府留学页仍写最长 2 年、每次 6 个月。",
+      "application_clock": "向 HiKorea/主管出入境机关核定适用批次、续期与实习条件，保留书面答复。",
+      "employer_checks": [
+        "具体职位能否衔接对应就业在留类别",
+        "韩语及学历/专业条件",
+        "雇主是否接受当前 D-10 及转换等待时间"
+      ],
+      "uncertainty": "官方页面存在新旧口径冲突；不能按本册自动承诺 3 年，亦不沿用旧 2 年作为现行定论。",
+      "verification_status": "官方来源冲突待确认",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Korean MOJ D-10 improvements",
+          "url": "https://www.immigration.go.kr/bbs/moj/189/601114/artclView.do",
+          "access": "正文已打开，公告日期 2025-12-02"
+        },
+        {
+          "title": "Study in Korea residence and stay",
+          "url": "https://studyinkorea.go.kr/ko/life/residenceAndStayInfo.do?tab=job-seeker-visa",
+          "access": "正文已打开，仍展示旧 2 年口径"
+        }
+      ]
+    },
+    {
+      "id": "MY",
+      "continent": "亚洲",
+      "region": "马来西亚",
+      "graduate_route": "Graduate Pass / 岗位工作准证",
+      "verified_summary": "EMGS Graduate Pass 面向合格本地本科及以上毕业生，可留一年且限获准行业兼职。中国籍适用扩围目前注明至 2026-12-31，并须良好行为证明。",
+      "application_clock": "申请期间需有效 Student Pass；2027 计划须重核国籍扩围是否续期。",
+      "employer_checks": [
+        "全职 AI 岗位具体需要的工作准证",
+        "雇主是否愿意申请及职位是否符合条件",
+        "Graduate Pass 获准兼职范围是否适用于拟议工作"
+      ],
+      "uncertainty": "不能把 Graduate Pass 宣传页的工作便利概括为全职 AI 岗开放工签；2027 续期尚未据本轮材料确认。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "EMGS Graduate Pass",
+          "url": "https://visa.educationmalaysia.gov.my/graduate-pass",
+          "access": "正文已打开；EMGS 属马来西亚高教部管辖机构"
+        }
+      ]
+    },
+    {
+      "id": "AU",
+      "continent": "大洋洲",
+      "region": "澳大利亚",
+      "graduate_route": "485 Post-Higher Education Work stream",
+      "verified_summary": "官方索引列一般申请年龄不超过 35 岁；研究硕士/博士及香港/BNO 护照持有人有未满 50 岁例外。一般本科/授课硕士 2 年，研究硕士/博士 3 年。",
+      "application_clock": "核对申请时年龄、毕业完成日、过去 6 个月学生签证及澳洲学习要求。",
+      "employer_checks": [
+        "graduate program 是否限公民/永居或不限期工作权",
+        "签证到期日能否覆盖整个培养项目",
+        "工作地点、专业与安全审查条件"
+      ],
+      "uncertainty": "官方页面正文动态加载未完整抓取；香港/BNO 特殊停留期、具体学位及其他例外须临申请复核。",
+      "verification_status": "官方索引核实，正文动态加载受限",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "Home Affairs 485 stream",
+          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work",
+          "access": "官方检索原文可读；打开页面正文动态加载"
+        },
+        {
+          "title": "Home Affairs 485 changes",
+          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/changes",
+          "access": "官方检索原文交叉核对，打开正文动态加载"
+        }
+      ]
+    },
+    {
+      "id": "NZ",
+      "continent": "大洋洲",
+      "region": "新西兰",
+      "graduate_route": "Post-Study Work Visa",
+      "verified_summary": "PSWV 最长 3 年，取决于学历及学习时长；学位与非学位低级别资格的工作范围不同。新增 Level 7 graduate diploma 路径官方页面出现 11 月 16 日/23 日两种生效日。",
+      "application_clock": "按具体学历核对学签到期后 3/6/12 个月申请窗口；新扩围路径截至 2026-11-13 尚未到页面所列生效日。",
+      "employer_checks": [
+        "职位要求的工作权和剩余期限",
+        "非学位资格是否限制相关职业",
+        "雇主是否接受尚在审理的申请及可入职日"
+      ],
+      "uncertainty": "主签证页写 2026-11-23，9 月 10 日新闻页写 2026-11-16；必须向 INZ 核定，不选择性忽略冲突。",
+      "verification_status": "基础路径正文核实，扩围生效日冲突",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "INZ Post-Study Work Visa",
+          "url": "https://www.immigration.govt.nz/visas/post-study-work-visa/",
+          "access": "正文已打开，新增路径日期为 2026-11-23"
+        },
+        {
+          "title": "INZ expansion announcement",
+          "url": "https://www.immigration.govt.nz/about-us/news-centre/post-study-work-visa-eligibility-extended-from-16-november-2026/",
+          "access": "正文已打开，公告日期 2026-09-10，生效日期为 2026-11-16"
+        },
+        {
+          "title": "INZ eligible qualifications",
+          "url": "https://www.immigration.govt.nz/study/after-you-finish-your-study/qualifications-needed-for-a-post-study-work-visa/",
+          "access": "正文已打开"
+        }
+      ]
+    },
+    {
+      "id": "CN",
+      "continent": "回国",
+      "region": "中国内地回国（中国籍）",
+      "graduate_route": "校招/社招资格与学历认证",
+      "verified_summary": "回国求职先按该雇主该年度公告判断毕业范围、认证截止和是否允许已有工作经历。留服网上大厅提供学历学位认证材料与申请入口。",
+      "application_clock": "分开记录学位授予日、证书发放日、回国日、认证日与可入职日。",
+      "employer_checks": [
+        "海外毕业日期区间是否单列",
+        "学历认证在投递/面试/入职哪个环节提交",
+        "专业名称、招聘主体、城市及校招/社招渠道"
+      ],
+      "uncertainty": "2026 国考官方指南仅作历史示例：其窗口不能套到 2027 企业 AI 校招。已变更国籍者须另查身份路径，不套本节。",
+      "verification_status": "官方正文可读",
+      "checked_at": "2026-11-13",
+      "recruiting_window": "逐岗位记录开放日、截止日及其时区、毕业范围、可入职日；本地区没有在本项目中被统一设定的招聘月份。",
+      "sources": [
+        {
+          "title": "教育部留学服务中心网上服务大厅",
+          "url": "https://zwfw.cscse.edu.cn/",
+          "access": "正文已打开，含 2026 年服务公告"
+        },
+        {
+          "title": "2026 国考报考指南（资格历史样本）",
+          "url": "https://www.beijing.gov.cn/fuwu/bmfw/sy/jrts/tzxx/202510/t20251016_4227200.html",
+          "access": "官方正文已打开，2025-10-16 发布；不是当前 AI 岗位招聘"
+        }
+      ]
+    }
+  ]
+}

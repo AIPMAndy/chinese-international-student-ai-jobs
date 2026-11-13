@@ -1,0 +1,170 @@
+{
+  "example_version": "2026-11-13",
+  "run_at_utc": "2026-11-13T07:38:55.488938+00:00",
+  "python": "3.12.14",
+  "system": "Linux",
+  "machine": "x86_64",
+  "model_id": "452db9263121",
+  "checks": [
+    {
+      "name": "health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "batch_preserves_order",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "invalid_json",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "empty_batch",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "non_string",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "blank_text",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "unknown_field",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "too_many_items",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "text_too_long",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "unknown_vocabulary",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "unsupported_content_type",
+      "status": 415,
+      "passed": true
+    },
+    {
+      "name": "oversized_body",
+      "status": 413,
+      "passed": true
+    },
+    {
+      "name": "unknown_route",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "20_requests_4_client_threads",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "sample_response": {
+    "model_id": "452db9263121",
+    "count": 3,
+    "predictions": [
+      {
+        "label": "access",
+        "uncalibrated_probabilities": {
+          "access": 0.97308,
+          "billing": 0.02505,
+          "technical": 0.00187
+        },
+        "known_token_count": 3
+      },
+      {
+        "label": "billing",
+        "uncalibrated_probabilities": {
+          "access": 0.005149,
+          "billing": 0.986667,
+          "technical": 0.008184
+        },
+        "known_token_count": 3
+      },
+      {
+        "label": "technical",
+        "uncalibrated_probabilities": {
+          "access": 0.034326,
+          "billing": 0.037862,
+          "technical": 0.927812
+        },
+        "known_token_count": 2
+      }
+    ]
+  },
+  "benchmark": {
+    "scope": "one local process; loopback; sequential HTTP incl client; synthetic 3-token input; not production load",
+    "warmup": 5,
+    "n": 40,
+    "p50_ms": 0.719,
+    "p95_ms": 0.859,
+    "sequential_requests_per_second": 1352.01,
+    "raw_ms": [
+      0.6613,
+      0.5538,
+      0.5864,
+      0.8012,
+      0.6039,
+      0.7305,
+      0.6176,
+      0.7142,
+      0.6241,
+      1.2242,
+      0.719,
+      0.7169,
+      0.7495,
+      0.8336,
+      0.6885,
+      0.826,
+      0.7612,
+      0.7862,
+      0.8314,
+      0.7332,
+      0.718,
+      0.6665,
+      0.686,
+      0.7124,
+      0.788,
+      0.7096,
+      0.6501,
+      0.6312,
+      0.8332,
+      0.6835,
+      0.8207,
+      0.722,
+      0.699,
+      0.7322,
+      0.8181,
+      0.8594,
+      0.6142,
+      0.8718,
+      0.8445,
+      0.7269
+    ]
+  },
+  "limitations": [
+    "http.server teaching server only",
+    "No TLS/auth/rate limiting",
+    "Request read timeout is not model cancellation",
+    "No load/capacity or Internet latency claim",
+    "Thread count is not bounded; bind is localhost only"
+  ]
+}
