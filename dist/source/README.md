@@ -17,9 +17,9 @@
 - [岗位研究](research/employer-jds.md) · [地区规则](research/regional-rules.md)
 - [验证记录](VALIDATION.md) · [覆盖缺口](research/coverage-gaps.md)
 
-公开仓库：[AIPMAndy/chinese-international-student-ai-jobs](https://github.com/AIPMAndy/chinese-international-student-ai-jobs)。仓库已创建并确认可写；本版完整正文、代码、PDF、模板与网站正在同步，正式网站部署状态见 [PUBLISH.md](PUBLISH.md)。
+公开仓库：[AIPMAndy/chinese-international-student-ai-jobs](https://github.com/AIPMAndy/chinese-international-student-ai-jobs)。完整正文、可运行代码、PDF、14 套模板与网站已发布；GitHub Actions 远端技术验收、部署及实际 HTTP 下载检查均已成功。发布详情见 [PUBLISH.md](PUBLISH.md)。
 
-网站离线包包含全部静态页面与 PDF、模板、源码下载。解压后可直接打开 `index.html`；完整本地验收建议在该目录运行 `python3 -m http.server 8080 --bind 127.0.0.1`，再打开 `http://127.0.0.1:8080/`。正式线上目标按 [DEPLOYMENT.md](DEPLOYMENT.md) 使用 GitHub Pages，部署与线上访问待验收。
+网站离线包包含全部静态页面与 PDF、模板、源码下载。解压后可直接打开 `index.html`；完整本地验收建议在该目录运行 `python3 -m http.server 8080 --bind 127.0.0.1`，再打开 `http://127.0.0.1:8080/`。正式网站已部署到 [GitHub Pages](https://aipmandy.github.io/chinese-international-student-ai-jobs/)，并通过实际 HTTP 下载检查。
 
 ## 这版实际包含什么
 
