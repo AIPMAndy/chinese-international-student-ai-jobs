@@ -10,11 +10,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify the committed release archives
-        run: python3 scripts/check_release.py
-      - run: python3 examples/run_all.py
-      - run: python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
-      - run: python3 scripts/package_release.py
-      - name: Verify the rebuilt release archives
+      - name: Verify the three technical teaching examples and risk cases
+        run: python3 examples/run_all.py
+      - name: Rebuild site from source
+        run: python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+      - name: Regenerate source, template and website archives
+        run: python3 scripts/package_release.py
+      - name: Validate all generated site metadata
+        run: python3 scripts/check_seo.py
+      - name: Verify current source archive, released website and evidence links
         run: python3 scripts/check_release.py
 
