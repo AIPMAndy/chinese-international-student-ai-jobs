@@ -438,7 +438,10 @@ def build_downloads():
         elif ready and f.suffix == '.zip':
             ready = zipfile.is_zipfile(f)
         if ready:
-            size=f.stat().st_size;sha=hashlib.sha256(f.read_bytes()).hexdigest();action='<a class="button" download href="downloads/'+name+'">下载 '+kind+' ↓</a>';meta=f'{size/1024/1024:.2f} MB · SHA-256 {sha[:16]}…'
+            action='<a class="button" download href="downloads/'+name+'">下载 '+kind+' ↓</a>'
+            # The source archive contains this page. Embedding its size/hash here
+            # would make every repack invalidate the metadata shown to readers.
+            meta='<a href="downloads/checksums.json">查看文件大小与完整 SHA-256 校验清单</a>'
         else:action='<span class="button disabled" aria-disabled="true">正在生成，暂不可下载</span>';meta='构建时未发现成品文件；正文与源码阅读不受影响。'
         cards.append('<article class="download-card"><span class="file-type">'+kind+'</span><h2>'+title+'</h2><p>'+desc+'</p>'+action+'<p class="file-meta">'+meta+'</p></article>')
     template_links=[]

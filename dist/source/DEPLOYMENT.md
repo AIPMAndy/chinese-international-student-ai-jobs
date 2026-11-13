@@ -8,9 +8,9 @@
 - 分支：`main`。
 - 工作流：`.github/workflows/pages.yml`。
 - 静态目录：`dist/`。
-- 预期项目地址：`https://aipmandy.github.io/chinese-international-student-ai-jobs/`。**此地址待发布，不代表已经上线。** 最终以部署返回值与实际访问结果为准。
+- 正式项目地址：[https://aipmandy.github.io/chinese-international-student-ai-jobs/](https://aipmandy.github.io/chinese-international-student-ai-jobs/)。已由 Pages 成功部署返回值和发布后 HTTP 检查确认。
 
-本文件未记录已验证的远端提交和 Pages 线上验收结果。ChatGPT Pages / Sites 不作为本项目的正式部署目标。
+已确认公开仓库、`main`、Pages 部署和线上下载。以下记录绑定具体验收提交；后续更新以对应工作流结果为准。正式网站使用本项目的 GitHub Pages。
 
 ## 发布步骤
 
@@ -43,11 +43,11 @@ python3 scripts/check_pages_links.py --require downloads/chinese-international-s
 | 项目 | 状态 |
 | --- | --- |
 | 远端仓库可访问 | 2026-11-14 已确认公开且可写 |
-| 推送提交 SHA | 待记录 |
-| Pages Actions 成功运行链接 | 待记录 |
-| 实际网站 URL | 待部署返回与访问确认 |
-| 首页、章节、PDF / ZIP 线上检查 | 待完成 |
-| 手机页面与关键交互检查 | 待完成 |
+| 验收提交 SHA | `6e125466cc1a48567564e514912227685d33381e` |
+| Pages Actions 成功运行链接 | [运行 43472027896](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/actions/runs/43472027896)：completed / success |
+| 实际网站 URL | [https://aipmandy.github.io/chinese-international-student-ai-jobs/](https://aipmandy.github.io/chinese-international-student-ai-jobs/)，与部署返回值一致 |
+| 首页、岗位页、地区页、PDF / ZIP 线上检查 | 此运行的 6 项发布后 HTTP 检查全部通过；HTML、PDF 和两个 ZIP 的文件签名符合预期 |
+| 手机页面与关键交互检查 | 本次部署复核未重做实体手机或浏览器交互测试；既有验证记录见 VALIDATION.md，不能把 HTTP 检查当作手机实测 |
 
 ## 官方依据
 

@@ -10,6 +10,62 @@ import re
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+ARCHIVE_NAME = 'chinese-international-student-ai-jobs'
+
+
+def source_inputs():
+    """Deterministic release inputs; exclude measured timings and generated logs."""
+    paths = set(ROOT.glob('*.md'))
+    paths.update(ROOT / name for name in ['LICENSE-CODE', '.gitignore'])
+    for folder in ['.github/workflows', 'docs', 'research', 'scripts', 'site-assets', 'templates', 'assets']:
+        paths.update(p for p in (ROOT / folder).rglob('*')
+                     if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc')
+    paths.update(p for p in (ROOT / 'examples').rglob('*')
+                 if p.is_file() and p.suffix in {'.py', '.md', '.jsonl'}
+                 and '__pycache__' not in p.parts)
+    paths.add(ROOT / 'examples/expected_metrics.json')
+    paths.add(ROOT / 'pdf' / (ARCHIVE_NAME + '-guide.pdf'))
+    paths.update((ROOT / 'validation/screenshots').glob('*.jpg'))
+    return sorted(p for p in paths if p.is_file())
+
+
+def check_archive_inputs(downloads, failures):
+    """Catch stale source documents and website bundles, including nested downloads."""
+    checked = {'source_input_files': 0, 'website_files': 0, 'website_checksums': 0}
+    source = downloads / (ARCHIVE_NAME + '-source.zip')
+    if source.is_file() and zipfile.is_zipfile(source):
+        with zipfile.ZipFile(source) as z:
+            names = set(z.namelist())
+            for path in source_inputs():
+                rel = path.relative_to(ROOT).as_posix()
+                member = ARCHIVE_NAME + '/' + rel
+                checked['source_input_files'] += 1
+                if member not in names:
+                    failures.append('source archive missing current input ' + rel)
+                elif z.read(member) != path.read_bytes():
+                    failures.append('source archive has stale input ' + rel)
+    website = downloads / (ARCHIVE_NAME + '-website.zip')
+    if website.is_file() and zipfile.is_zipfile(website):
+        with zipfile.ZipFile(website) as z:
+            names = set(z.namelist())
+            for path in sorted((ROOT / 'dist').rglob('*')):
+                if not path.is_file() or path in {website, downloads / 'checksums.json'}:
+                    continue
+                rel = path.relative_to(ROOT / 'dist').as_posix()
+                checked['website_files'] += 1
+                if rel not in names:
+                    failures.append('website archive missing current file ' + rel)
+                elif z.read(rel) != path.read_bytes():
+                    failures.append('website archive has stale file ' + rel)
+            if 'downloads/checksums.json' not in names:
+                failures.append('website archive missing internal checksums')
+            else:
+                for item in json.loads(z.read('downloads/checksums.json'))['artifacts']:
+                    member = 'downloads/' + item['file']
+                    checked['website_checksums'] += 1
+                    if member not in names or hashlib.sha256(z.read(member)).hexdigest() != item['sha256']:
+                        failures.append('website archive checksum mismatch ' + item['file'])
+    return checked
 
 
 class Page(HTMLParser):
@@ -111,6 +167,7 @@ def main():
                 failures.append(str(path.relative_to(ROOT))+': unpublished candidate repository advertised as a live link')
     downloads=ROOT/'dist/downloads'
     archives=[]
+    archive_input_checks = {}
     if not args.allow_incomplete:
         expected=['chinese-international-student-ai-jobs-guide.pdf','templates.zip','chinese-international-student-ai-jobs-source.zip','chinese-international-student-ai-jobs-website.zip']
         for name in expected:
@@ -133,7 +190,9 @@ def main():
                 p=downloads/a['file']
                 if p.exists() and hashlib.sha256(p.read_bytes()).hexdigest()!=a['sha256']:
                     failures.append('checksum mismatch '+a['file'])
+        archive_input_checks = check_archive_inputs(downloads, failures)
     result={'version':'1.0.0','checked_at':'2026-11-13','jd_records':len(jobs),'jd_detail_readable':sum(x['source_status']=='official_detail_readable' for x in jobs),'regions':len(regions),'templates':len(list((ROOT/'templates').glob('[0-9][0-9]-*.md'))),'html_pages':len(pages),'original_source_url_placements_checked':sum(len(urls) for _,urls in fidelity),'archives':archives,'failures':failures,'status':'passed' if not failures else 'failed','external_links':'Primary source access statuses recorded in research; not a blanket assertion that every external URL is currently reachable.'}
+    result['archive_input_checks'] = archive_input_checks
     (ROOT/'validation').mkdir(exist_ok=True)
     (ROOT/'validation/content-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False,indent=2))
