@@ -26,7 +26,15 @@ jobs:
     steps:
       - name: Check out the committed project
         uses: actions/checkout@v6
-      - name: Validate the committed static site and downloads
+        with:
+          persist-credentials: false
+      - name: Rebuild site and downloads from authoritative sources
+        run: |
+          python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+          python3 scripts/package_release.py
+      - name: Validate all generated SEO metadata and sitemap
+        run: python3 scripts/check_seo.py
+      - name: Validate generated static site and downloads
         run: python3 scripts/check_pages_links.py --require downloads/chinese-international-student-ai-jobs-guide.pdf --require downloads/templates.zip --require downloads/chinese-international-student-ai-jobs-source.zip
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -44,6 +52,8 @@ jobs:
           python3 - <<'PY'
           import os
           import time
+          import hashlib
+          from pathlib import Path
           from urllib.request import Request, urlopen
 
           base = os.environ["LIVE_URL"].rstrip("/") + "/"
@@ -54,6 +64,10 @@ jobs:
               ("downloads/chinese-international-student-ai-jobs-guide.pdf", b"%PDF-"),
               ("downloads/templates.zip", b"PK\x03\x04"),
               ("downloads/chinese-international-student-ai-jobs-source.zip", b"PK\x03\x04"),
+              ("sitemap.xml", b"<?xml"),
+              ("robots.txt", b"User-agent"),
+              ("assets/style.css", b":root"),
+              ("assets/app.js", b""),
           ]
           for path, prefix in checks:
               url = base + path
@@ -61,10 +75,14 @@ jobs:
                   try:
                       request = Request(url, headers={"User-Agent": "AI-Jobs-Guide-Release-Check/1.0"})
                       with urlopen(request, timeout=15) as response:
-                          data = response.read(96)
+                          data = response.read()
                           if response.status != 200 or not data.lstrip().lower().startswith(prefix.lower()):
                               raise RuntimeError(f"Invalid HTTP response or file signature at {url}")
-                      print("HTTP VERIFIED", url, flush=True)
+                      expected = (Path("dist") / (path or "index.html")).read_bytes()
+                      actual_sha = hashlib.sha256(data).hexdigest()
+                      if actual_sha != hashlib.sha256(expected).hexdigest():
+                          raise RuntimeError(f"Published file SHA-256 differs from current build: {url}")
+                      print("HTTP/SHA VERIFIED", url, len(data), actual_sha, flush=True)
                       break
                   except Exception as exc:
                       if attempt == 7:
