@@ -11,6 +11,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 examples/run_all.py
-      - run: python3 scripts/build_site.py
+      - run: python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
       - run: python3 scripts/check_release.py
 
