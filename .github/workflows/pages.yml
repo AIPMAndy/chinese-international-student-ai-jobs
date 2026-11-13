@@ -37,3 +37,38 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify public HTTP, PDF and download links
+        env:
+          LIVE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import time
+          from urllib.request import Request, urlopen
+
+          base = os.environ["LIVE_URL"].rstrip("/") + "/"
+          checks = [
+              ("", b"<!doctype html>"),
+              ("jobs.html", b"<!doctype html>"),
+              ("regions.html", b"<!doctype html>"),
+              ("downloads/chinese-international-student-ai-jobs-guide.pdf", b"%PDF-"),
+              ("downloads/templates.zip", b"PK\x03\x04"),
+              ("downloads/chinese-international-student-ai-jobs-source.zip", b"PK\x03\x04"),
+          ]
+          for path, prefix in checks:
+              url = base + path
+              for attempt in range(8):
+                  try:
+                      request = Request(url, headers={"User-Agent": "AI-Jobs-Guide-Release-Check/1.0"})
+                      with urlopen(request, timeout=15) as response:
+                          data = response.read(96)
+                          if response.status != 200 or not data.lstrip().lower().startswith(prefix.lower()):
+                              raise RuntimeError(f"Invalid HTTP response or file signature at {url}")
+                      print("HTTP VERIFIED", url, flush=True)
+                      break
+                  except Exception as exc:
+                      if attempt == 7:
+                          raise
+                      print(f"Retry {attempt + 1}/8 for {url}: {exc}", flush=True)
+                      time.sleep(3)
+          PY
