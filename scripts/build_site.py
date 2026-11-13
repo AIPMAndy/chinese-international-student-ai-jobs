@@ -300,11 +300,34 @@ def layout(page_url, title, body, active='', search=False):
     nav=''.join('<a'+(' class="active" aria-current="page"' if active==k else '')+' href="'+p+u+'">'+t+'</a>' for u,t,k in links)
     repo='<a href="'+h(REPO_URL)+'" target="_blank" rel="noopener noreferrer">GitHub 开源仓库</a>' if REPO_URL else '<span class="publication">GitHub 仓库：待发布</span>'
     script='<script src="'+p+'data/search-index.js" defer></script>' if search else ''
+    # Declare only facts visible on the generated page; avoid unsupported outcome claims.
+    page_location = SITE_URL if page_url == 'index.html' else SITE_URL + page_url
+    page_title = title + ' · AI 酋长 Andy'
+    schema = {
+        '@context': 'https://schema.org', '@type': 'WebPage',
+        'name': title, 'description': DESCRIPTION, 'url': page_location,
+        'inLanguage': 'zh-CN', 'dateModified': DATE,
+        'isPartOf': {'@type': 'WebSite', 'name': TITLE, 'url': SITE_URL},
+        'author': {'@type': 'Person', 'name': 'AI 酋长 Andy', 'url': 'https://metaver.vip/'},
+        'publisher': {'@type': 'Organization', 'name': '星觉科技', 'url': 'https://www.a6no1.cn/'}
+    }
+    jsonld = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
+    metadata = (
+        f'<link rel="canonical" href="{h(page_location)}">'
+        f'<meta property="og:type" content="website">'
+        f'<meta property="og:site_name" content="{h(TITLE)}">'
+        f'<meta property="og:locale" content="zh_CN">'
+        f'<meta property="og:title" content="{h(page_title)}">'
+        f'<meta property="og:description" content="{h(DESCRIPTION)}">'
+        f'<meta property="og:url" content="{h(page_location)}">'
+        f'<meta name="twitter:card" content="summary">'
+        f'<script type="application/ld+json">{jsonld}</script>'
+    )
     return f'''<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{h(DESCRIPTION)}"><meta name="theme-color" content="#152725"><title>{h(title)} · AI 酋长 Andy</title><link rel="canonical" href="{h(SITE_URL + page_url)}"><link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{p}assets/style.css">{script}<script src="{p}assets/app.js" defer></script></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{h(DESCRIPTION)}"><meta name="theme-color" content="#152725"><title>{h(title)} · AI 酋长 Andy</title>{metadata}<link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{p}assets/style.css">{script}<script src="{p}assets/app.js" defer></script></head>
 <body data-base="{p}"><a class="skip-link" href="#main">跳到正文</a><header class="topbar"><div class="wrap nav-inner"><a class="brand" href="{p}index.html" aria-label="AI 岗位求职攻略首页"><span class="brand-mark" aria-hidden="true">A</span><span class="brand-title">AI 岗位求职指南<small>AI 酋长 ANDY · OPEN GUIDE</small></span></a><button id="menu-toggle" class="menu-toggle" aria-controls="nav-links" aria-expanded="false">目录</button><nav class="nav-links" id="nav-links" aria-label="主导航">{nav}<a class="nav-start" href="{p}self-check.html">岗位自查</a></nav></div></header>
 <main id="main">{body}</main>
-<footer class="footer"><div class="wrap footer-grid"><div><strong>把岗位要求，变成可以验证的证据。</strong><p>作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy</p><div class="footer-links"><a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网 metaver.vip</a><a href="https://www.a6no1.cn/" target="_blank" rel="noopener noreferrer">公司官网 a6no1.cn</a>{repo}</div></div><div class="footer-right"><p>版本 1.0.0 · 资料核验 {DATE}<br>免费内容完整开放 · 教学模拟明确标注<br>独立阅读，无账号、无数据上传、无访问统计。</p><div class="footer-links" style="justify-content:inherit"><a href="{p}search.html">搜索全文</a><a href="{p}read/research-coverage-gaps.html">待补信息与核验边界</a></div></div></div></footer></body></html>'''
+<footer class="footer"><div class="wrap footer-grid"><div><strong>把岗位要求，变成可以验证的证据。</strong><p>作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy</p><div class="footer-links"><a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网 metaver.vip</a><a href="https://www.a6no1.cn/" target="_blank" rel="noopener noreferrer">公司官网 a6no1.cn</a><a href="https://metaver.vip/services" target="_blank" rel="noopener noreferrer">咨询与陪跑</a>{repo}</div></div><div class="footer-right"><p>版本 1.0.0 · 资料核验 {DATE}<br>免费内容完整开放 · 教学模拟明确标注<br>独立阅读，无账号、无数据上传、无访问统计。</p><div class="footer-links" style="justify-content:inherit"><a href="{p}search.html">搜索全文</a><a href="{p}read/research-coverage-gaps.html">待补信息与核验边界</a></div></div></div></footer></body></html>'''
 
 
 def save(url, title, body, active='', search=False):
@@ -529,6 +552,17 @@ def main():
     build_home(jd,policy,summary);build_guide();build_read_pages();build_jobs(jd);build_regions(policy);build_projects(summary);build_downloads();build_selfcheck();build_search()
     manifest=dict(title=TITLE,version='1.0.0',checked_at=DATE,github_url=REPO_URL or None,content_pages=len(PAGES),top_pages=['index.html','guide.html','jobs.html','regions.html','projects.html','downloads.html','self-check.html','search.html'],jd_records=len(jd.get('jobs',[])),region_records=len(policy.get('regions',[])),downloads=[p.name for p in sorted((OUT/'downloads').glob('*')) if p.is_file()],data_sources=['research/employer-jds.json','research/regional-rules.json','examples/verification-summary.json'],generated_with='Python standard library; local static assets; no external requests')
     (OUT/'site-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+    # Every HTML route is included (including deep reader pages); no fictitious paths.
+    from xml.sax.saxutils import escape as xml_escape
+    html_pages = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob('*.html'))
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>' \
+        + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' \
+        + ''.join('<url><loc>' + xml_escape(SITE_URL if page == 'index.html' else SITE_URL + page) + '</loc><lastmod>' + DATE + '</lastmod></url>' for page in html_pages) \
+        + '</urlset>'
+    (OUT/'sitemap.xml').write_text(sitemap, encoding='utf-8')
+    (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + SITE_URL + 'sitemap.xml\n', encoding='utf-8')
+
     print(json.dumps(manifest,ensure_ascii=False,indent=2))
 
 
