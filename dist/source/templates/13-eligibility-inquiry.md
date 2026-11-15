@@ -72,5 +72,4 @@ Best regards,
 - 对方确认后更新[投递台账](10-application-tracker.md)，没有回复保留未知。
 - 原始邮件保存在个人记录中，不公开招聘人员信息或私人往来。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

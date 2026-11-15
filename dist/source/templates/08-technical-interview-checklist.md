@@ -65,5 +65,4 @@
 - 任何“生产级”“安全”“显著提升”都能提供对应证据，否则收窄表达。
 - 模拟题用于练习；正式面试遵守招聘方对工具与AI的要求。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

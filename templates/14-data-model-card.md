@@ -63,5 +63,4 @@
 - 报告数字可回到评测记录，分数含义不被夸大。
 - 发布包不依赖未获得公开许可的材料，未知许可不写成默认允许。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

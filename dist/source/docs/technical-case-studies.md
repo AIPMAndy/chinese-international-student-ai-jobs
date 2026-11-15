@@ -1,7 +1,6 @@
 # 技术案例：从“跑得动”到“证据可信”
 
-作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ · 公司官网：https://www.a6no1.cn/  
+作者：AI酋长Andy · 星觉科技 · 北京 · 微信号：AIPMAndy  
 版本与验收日期：2026-11-13。
 
 三个案例全部使用本项目新写代码和合成输入，属于教学模拟。没有真实客户、商业 KPI、用户量、薪资或 Offer 结果。它们分别展示实验、工程、应用三个方向的基础证据结构。完整运行说明在 [examples](../examples/README.md)。

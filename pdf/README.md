@@ -1,7 +1,6 @@
 # PDF 成品与重建
 
-作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ · 公司官网：https://www.a6no1.cn/  
+作者：AI酋长Andy · 星觉科技 · 北京 · 微信号：AIPMAndy  
 版本：2026-11-13。
 
 成品文件：`chinese-international-student-ai-jobs-guide.pdf`。

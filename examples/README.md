@@ -1,7 +1,6 @@
 # 三个能运行、能解释、能查错的技术样例
 
-作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ · 公司官网：https://www.a6no1.cn/  
+作者：AI酋长Andy · 星觉科技 · 北京 · 微信号：AIPMAndy  
 版本：2026-11-13。全部为教学模拟，不代表客户案例、商业部署或求职成绩。
 
 ## 先跑起来

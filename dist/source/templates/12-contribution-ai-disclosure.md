@@ -55,5 +55,4 @@
 - 代码、数据、模型和图片的许可分别核对，不因代码MIT就默认全部可用。
 - 能解释自己采纳或拒绝AI建议的一个具体理由。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

@@ -51,5 +51,4 @@
 - 每个比例写清分母；不把小样本差异自动当显著提升。
 - 报告同时列失败、成本和适用边界。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  
