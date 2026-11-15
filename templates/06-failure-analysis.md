@@ -45,5 +45,4 @@
 - 至少比较两个可能原因，或说明为何证据已足以排除其他层。
 - 修复有回归检查及副作用记录；未修复也能解释限制。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

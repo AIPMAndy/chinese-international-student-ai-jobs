@@ -21,6 +21,7 @@ class Page(HTMLParser):
         self.description = ''
         self.canonical = []
         self.og = {}
+        self.twitter = {}
         self.scripts = []
         self.inside_script = False
 
@@ -34,6 +35,8 @@ class Page(HTMLParser):
             if a.get('name') == 'description': self.description = a.get('content','')
             if a.get('property','').startswith('og:'):
                 self.og[a['property']] = a.get('content','')
+            if a.get('name','').startswith('twitter:'):
+                self.twitter[a['name']] = a.get('content','')
         if tag == 'script' and a.get('type') == 'application/ld+json':
             self.scripts.append('')
             self.inside_script = True
@@ -64,6 +67,13 @@ def main():
             errors.append(f'{path}: OG title/URL mismatch')
         for key in ['og:site_name','og:description','og:locale']:
             if not meta.og.get(key): errors.append(f'{path}: missing {key}')
+        image = BASE + 'assets/social-preview.png'
+        if meta.og.get('og:image') != image:
+            errors.append(f'{path}: og:image {meta.og.get("og:image")!r}')
+        if meta.og.get('og:image:width') != '1280' or meta.og.get('og:image:height') != '640':
+            errors.append(f'{path}: og:image dimensions {meta.og.get("og:image:width")!r}x{meta.og.get("og:image:height")!r}')
+        if meta.twitter.get('twitter:card') != 'summary_large_image':
+            errors.append(f'{path}: twitter:card {meta.twitter.get("twitter:card")!r}')
         if len(meta.scripts) != 1:
             errors.append(f'{path}: JSON-LD count {len(meta.scripts)}')
             continue
@@ -76,10 +86,15 @@ def main():
             errors.append(f'{path}: invalid WebPage context/type')
         if doc.get('url') != url or doc.get('inLanguage') != 'zh-CN':
             errors.append(f'{path}: schema URL/language mismatch')
-        if doc.get('author',{}).get('name') != 'AI 酋长 Andy' or doc.get('author',{}).get('url') != 'https://metaver.vip/':
+        author = doc.get('author', {})
+        if author.get('name') != 'AI酋长Andy' or author.get('affiliation', {}).get('name') != '星觉科技' or author.get('address', {}).get('addressLocality') != '北京':
             errors.append(f'{path}: author mismatch')
-        if doc.get('publisher',{}).get('url') != 'https://www.a6no1.cn/':
+        if any(key in doc for key in ('aggregateRating', 'review', 'ratingValue')):
+            errors.append(f'{path}: ratings are not allowed')
+        if doc.get('publisher',{}).get('name') != '星觉科技' or doc.get('publisher',{}).get('url') != 'https://www.a6no1.cn/':
             errors.append(f'{path}: publisher mismatch')
+        if '前腾讯、百度 AI 产品专家' in file.read_text('utf-8'):
+            errors.append(f'{path}: old author title remains')
     try:
         robot = (SITE/'robots.txt').read_text('utf-8')
         if 'Sitemap: '+BASE+'sitemap.xml' not in robot:
@@ -92,8 +107,22 @@ def main():
     except (OSError, ET.ParseError) as exc:
         errors.append(f'robots/sitemap invalid: {exc}')
     homepage = (SITE/'index.html').read_text('utf-8')
-    for value in ('AIPMAndy', 'data-copy', 'https://metaver.vip/', 'https://metaver.vip/services', 'https://www.a6no1.cn/'):
+    for value in ('AIPMAndy', 'AI酋长Andy', '星觉科技', '北京', 'data-copy', 'https://metaver.vip/', 'https://metaver.vip/services', 'https://www.a6no1.cn/'):
         if value not in homepage: errors.append('homepage missing '+value)
+    if '二维码' in homepage or 'qrcode' in homepage.lower():
+        errors.append('homepage includes a QR code')
+    preview = SITE/'assets'/'social-preview.png'
+    if not preview.is_file():
+        errors.append('missing assets/social-preview.png')
+    else:
+        data = preview.read_bytes()
+        if not data.startswith(b'\x89PNG\r\n\x1a\n') or data[12:16] != b'IHDR':
+            errors.append('social preview is not a PNG')
+        else:
+            width = int.from_bytes(data[16:20], 'big')
+            height = int.from_bytes(data[20:24], 'big')
+            if (width, height) != (1280, 640):
+                errors.append(f'social preview is {width}x{height}')
     summary = {'html_pages':len(html_files),'sitemap_urls':len(expected),'errors':errors[:40],'omitted_errors':max(0,len(errors)-40)}
     print(json.dumps(summary,ensure_ascii=False,indent=2))
     return int(bool(errors))

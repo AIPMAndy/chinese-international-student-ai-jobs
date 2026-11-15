@@ -27,4 +27,4 @@
 - 项目结果可转换为真实的简历、GitHub展示和面试追问。
 - 政策与雇主要求分开，不套用单一国家的经验。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy｜[个人官网](https://metaver.vip/)｜[公司官网](https://www.a6no1.cn/)。
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy。

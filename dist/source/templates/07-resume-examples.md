@@ -98,5 +98,4 @@ GitHub：【个人链接】｜目标岗位：【具体路线与级别】
 - “本人新增”不能空着；没有新增就明确只是复现练习。
 - 能在面试中解释一个失败、一个取舍、一个不是自己完成的部分。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

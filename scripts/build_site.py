@@ -302,16 +302,22 @@ def layout(page_url, title, body, active='', search=False):
     script='<script src="'+p+'data/search-index.js" defer></script>' if search else ''
     # Declare only facts visible on the generated page; avoid unsupported outcome claims.
     page_location = SITE_URL if page_url == 'index.html' else SITE_URL + page_url
-    page_title = title + ' · AI 酋长 Andy'
+    page_title = title + ' · AI酋长Andy'
     schema = {
         '@context': 'https://schema.org', '@type': 'WebPage',
         'name': title, 'description': DESCRIPTION, 'url': page_location,
         'inLanguage': 'zh-CN', 'dateModified': DATE,
         'isPartOf': {'@type': 'WebSite', 'name': TITLE, 'url': SITE_URL},
-        'author': {'@type': 'Person', 'name': 'AI 酋长 Andy', 'url': 'https://metaver.vip/'},
+        'author': {
+            '@type': 'Person',
+            'name': 'AI酋长Andy',
+            'affiliation': {'@type': 'Organization', 'name': '星觉科技'},
+            'address': {'@type': 'PostalAddress', 'addressLocality': '北京'},
+        },
         'publisher': {'@type': 'Organization', 'name': '星觉科技', 'url': 'https://www.a6no1.cn/'}
     }
     jsonld = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
+    image = 'https://aipmandy.github.io/chinese-international-student-ai-jobs/assets/social-preview.png'
     metadata = (
         f'<link rel="canonical" href="{h(page_location)}">'
         f'<meta property="og:type" content="website">'
@@ -320,14 +326,17 @@ def layout(page_url, title, body, active='', search=False):
         f'<meta property="og:title" content="{h(page_title)}">'
         f'<meta property="og:description" content="{h(DESCRIPTION)}">'
         f'<meta property="og:url" content="{h(page_location)}">'
-        f'<meta name="twitter:card" content="summary">'
+        f'<meta property="og:image" content="{image}">'
+        f'<meta property="og:image:width" content="1280">'
+        f'<meta property="og:image:height" content="640">'
+        f'<meta name="twitter:card" content="summary_large_image">'
         f'<script type="application/ld+json">{jsonld}</script>'
     )
     return f'''<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{h(DESCRIPTION)}"><meta name="theme-color" content="#152725"><title>{h(title)} · AI 酋长 Andy</title>{metadata}<link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{p}assets/style.css">{script}<script src="{p}assets/app.js" defer></script></head>
-<body data-base="{p}"><a class="skip-link" href="#main">跳到正文</a><header class="topbar"><div class="wrap nav-inner"><a class="brand" href="{p}index.html" aria-label="AI 岗位求职攻略首页"><span class="brand-mark" aria-hidden="true">A</span><span class="brand-title">AI 岗位求职指南<small>AI 酋长 ANDY · OPEN GUIDE</small></span></a><button id="menu-toggle" class="menu-toggle" aria-controls="nav-links" aria-expanded="false">目录</button><nav class="nav-links" id="nav-links" aria-label="主导航">{nav}<a class="nav-start" href="{p}self-check.html">岗位自查</a></nav></div></header>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{h(DESCRIPTION)}"><meta name="theme-color" content="#152725"><title>{h(title)} · AI酋长Andy</title>{metadata}<link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{p}assets/style.css">{script}<script src="{p}assets/app.js" defer></script></head>
+<body data-base="{p}"><a class="skip-link" href="#main">跳到正文</a><header class="topbar"><div class="wrap nav-inner"><a class="brand" href="{p}index.html" aria-label="AI 岗位求职攻略首页"><span class="brand-mark" aria-hidden="true">A</span><span class="brand-title">AI 岗位求职指南<small>AI酋长Andy · OPEN GUIDE</small></span></a><button id="menu-toggle" class="menu-toggle" aria-controls="nav-links" aria-expanded="false">目录</button><nav class="nav-links" id="nav-links" aria-label="主导航">{nav}<a class="nav-start" href="{p}self-check.html">岗位自查</a></nav></div></header>
 <main id="main">{body}</main>
-<footer class="footer"><div class="wrap footer-grid"><div><strong>把岗位要求，变成可以验证的证据。</strong><p>作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy</p><div class="footer-links"><a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网 metaver.vip</a><a href="https://www.a6no1.cn/" target="_blank" rel="noopener noreferrer">公司官网 a6no1.cn</a><a href="https://metaver.vip/services" target="_blank" rel="noopener noreferrer">咨询与陪跑</a><a href="https://aipmandy.github.io/chinese-international-student-career-guide/">留学生求职总攻略</a><a href="https://aipmandy.github.io/chinese-international-student-product-jobs/">产品岗位攻略</a><a href="https://aipmandy.github.io/chinese-international-student-business-jobs/">商科岗位攻略</a>{repo}</div></div><div class="footer-right"><p>版本 1.0.0 · 资料核验 {DATE}<br>免费内容完整开放 · 教学模拟明确标注<br>独立阅读，无账号、无数据上传、无访问统计。</p><div class="footer-links" style="justify-content:inherit"><a href="{p}search.html">搜索全文</a><a href="{p}read/research-coverage-gaps.html">待补信息与核验边界</a></div></div></div></footer></body></html>'''
+<footer class="footer"><div class="wrap footer-grid"><div><strong>把岗位要求，变成可以验证的证据。</strong><p>作者：AI酋长Andy · 星觉科技 · 北京 · 微信号：AIPMAndy</p><div class="footer-links"><a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网 metaver.vip</a><a href="https://www.a6no1.cn/" target="_blank" rel="noopener noreferrer">公司官网 a6no1.cn</a><a href="https://metaver.vip/services" target="_blank" rel="noopener noreferrer">咨询与陪跑</a><a href="https://aipmandy.github.io/chinese-international-student-career-guide/">留学生求职总攻略</a><a href="https://aipmandy.github.io/chinese-international-student-product-jobs/">产品岗位攻略</a><a href="https://aipmandy.github.io/chinese-international-student-business-jobs/">商科岗位攻略</a>{repo}</div></div><div class="footer-right"><p>版本 1.0.0 · 资料核验 {DATE}<br>免费内容完整开放 · 教学模拟明确标注<br>独立阅读，无账号、无数据上传、无访问统计。</p><div class="footer-links" style="justify-content:inherit"><a href="{p}search.html">搜索全文</a><a href="{p}read/research-coverage-gaps.html">待补信息与核验边界</a></div></div></div></footer></body></html>'''
 
 
 def save(url, title, body, active='', search=False):
@@ -349,7 +358,7 @@ def doc_url(source, fallback='guide.html'):
 def build_home(jd, policy, summary):
     jobs=jd.get('jobs',[]);regions=policy.get('regions',[]);full=sum(j.get('source_status')=='official_detail_readable' for j in jobs);partial=len(jobs)-full
     projects=sum(bool(read_json(p)) for p in ['examples/01_ml_experiment/reports/evaluation.json','examples/02_model_service/reports/verification.json','examples/03_grounded_retrieval/reports/evaluation.json'])
-    hero=f'''<div class="wrap"><section class="hero"><div class="hero-grid"><div><p class="eyebrow">CHINESE INTERNATIONAL STUDENTS · AI CAREER GUIDE</p><h1>中国留学生<br><em>AI 岗位求职</em><br>保姆级攻略</h1><p class="hero-deck">从真实岗位出发，找到适合你的技术路线。<br>补足能力证据，做出可验证的项目，准备经得起追问的面试回答。</p><div class="actions"><a class="button" href="{doc_url('docs/00-start.md')}">从 90 分钟行动开始 <span aria-hidden="true">↗</span></a><a class="button secondary" href="downloads.html">下载完整资料</a></div><p class="hero-foot">作者 AI 酋长 Andy · 版本 1.0.0 · 核验 {DATE}<br>申请 AI 技术岗位的完整路径；本册可独立使用。</p></div><aside class="route-sheet" aria-label="从岗位到证据的四步路径"><p class="sheet-label">YOUR EVIDENCE PATH</p><h2>每一步，都有交付物。</h2><div class="sheet-step"><span>01</span><div><strong>判断岗位与资格</strong><p>职责、毕业窗口、地点、工作权</p></div></div><div class="sheet-step"><span>02</span><div><strong>定位能力差距</strong><p>编程、数学、研究与工程证据</p></div></div><div class="sheet-step"><span>03</span><div><strong>完成可复现项目</strong><p>数据、基线、评测、失败与限制</p></div></div><div class="sheet-step"><span>04</span><div><strong>定向申请与面试</strong><p>简历、项目追问、投递复盘</p></div></div><div class="sheet-note">免费内容完整开放 · 不需要先加微信</div></aside></div></section><section class="stats" aria-label="本版资料覆盖"><div class="stat"><div class="stat-value">3</div><div class="stat-label">技术主路线</div><div class="stat-detail">研究/建模 · 工程 · 应用</div></div><div class="stat"><div class="stat-value">{len(jobs)}</div><div class="stat-label">真实雇主 JD 研究记录</div><div class="stat-detail">{full} 条详情可读 · {partial} 条待复核</div></div><div class="stat"><div class="stat-value">{len(regions)}</div><div class="stat-label">代表性地区资格记录</div><div class="stat-detail">保留访问限制与官方冲突</div></div><div class="stat"><div class="stat-value">{projects}</div><div class="stat-label">本地可运行技术样例</div><div class="stat-detail">{'已有实测报告' if summary else '运行状态以报告为准'} · 明确教学边界</div></div></section>'''
+    hero=f'''<div class="wrap"><section class="hero"><div class="hero-grid"><div><p class="eyebrow">CHINESE INTERNATIONAL STUDENTS · AI CAREER GUIDE</p><h1>中国留学生<br><em>AI 岗位求职</em><br>保姆级攻略</h1><p class="hero-deck">从真实岗位出发，找到适合你的技术路线。<br>补足能力证据，做出可验证的项目，准备经得起追问的面试回答。</p><div class="actions"><a class="button" href="{doc_url('docs/00-start.md')}">从 90 分钟行动开始 <span aria-hidden="true">↗</span></a><a class="button secondary" href="downloads.html">下载完整资料</a></div><p class="hero-foot">作者 AI酋长Andy · 星觉科技 · 北京 · 版本 1.0.0 · 核验 {DATE}<br>申请 AI 技术岗位的完整路径；本册可独立使用。</p></div><aside class="route-sheet" aria-label="从岗位到证据的四步路径"><p class="sheet-label">YOUR EVIDENCE PATH</p><h2>每一步，都有交付物。</h2><div class="sheet-step"><span>01</span><div><strong>判断岗位与资格</strong><p>职责、毕业窗口、地点、工作权</p></div></div><div class="sheet-step"><span>02</span><div><strong>定位能力差距</strong><p>编程、数学、研究与工程证据</p></div></div><div class="sheet-step"><span>03</span><div><strong>完成可复现项目</strong><p>数据、基线、评测、失败与限制</p></div></div><div class="sheet-step"><span>04</span><div><strong>定向申请与面试</strong><p>简历、项目追问、投递复盘</p></div></div><div class="sheet-note">免费内容完整开放 · 不需要先加微信</div></aside></div></section><section class="stats" aria-label="本版资料覆盖"><div class="stat"><div class="stat-value">3</div><div class="stat-label">技术主路线</div><div class="stat-detail">研究/建模 · 工程 · 应用</div></div><div class="stat"><div class="stat-value">{len(jobs)}</div><div class="stat-label">真实雇主 JD 研究记录</div><div class="stat-detail">{full} 条详情可读 · {partial} 条待复核</div></div><div class="stat"><div class="stat-value">{len(regions)}</div><div class="stat-label">代表性地区资格记录</div><div class="stat-detail">保留访问限制与官方冲突</div></div><div class="stat"><div class="stat-value">{projects}</div><div class="stat-label">本地可运行技术样例</div><div class="stat-detail">{'已有实测报告' if summary else '运行状态以报告为准'} · 明确教学边界</div></div></section>'''
     routes=[('R1','算法与机器学习','RESEARCH / APPLIED ML','从数据和实验回答问题。研究岗位还要证明新的问题、方法与个人贡献。','数据划分、基线、消融、误差分析','ml'),('R2','AI 工程','ML SYSTEMS / ENGINEERING','把模型交给其他系统使用。接口、资源、可靠性和观测都需要证据。','输入校验、模型版本、延迟、回滚','service'),('R3','AI 应用工程','APPLIED AI SOFTWARE','把检索或模型能力接入具体任务。评测、引用、拒答和权限一起验收。','任务评测、证据引用、失败与回退','retrieval')]
     route_html=''.join(f'<article class="route-card"><div class="route-no">{code} / 技术路线</div><h3>{name}</h3><p class="subtitle">{en}</p><p>{desc}</p><div class="evidence"><strong>你要拿出的证据</strong><br>{ev}</div><a href="projects.html#{anchor}">查看对应教学项目 →</a></article>' for code,name,en,desc,ev,anchor in routes)
     body=hero+f'''<section class="section"><div class="section-heading"><div><h2>先选一条主线，再补关键证据。</h2><p>按实际职责分流。岗位标题不能代替对 JD 的逐条判断。</p></div><a href="{doc_url('docs/01-role-map.md')}">阅读完整岗位路线图 →</a></div><div class="grid-3">{route_html}</div></section><section class="section split-section"><div><p class="eyebrow">FIRST 90 MINUTES</p><h2>今天就能开始。<br>先交出第一份判断。</h2><p>不同学历、专业和技术基础，都从约束与证据开始。先把“可投”“先确认”和“先补能力”分开。</p><a class="button secondary" href="self-check.html">做一次岗位自查</a></div><ol class="step-list"><li><div><strong>写下你的真实约束</strong><p>毕业日期、入职时间、目标地点、当前工作资格。</p></div></li><li><div><strong>对照两条具体 JD</strong><p>分清必需条件与加分项，保留原始链接和核验日期。</p></div></li><li><div><strong>把要求对应到证据</strong><p>课程、研究、实习、开源贡献和项目，分别写清个人职责。</p></div></li><li><div><strong>运行一个样例，解释一个失败</strong><p>从输入到输出走一遍。成功运行只是开始，解释与改进才形成你的证据。</p></div></li></ol></section><section class="section"><div class="notice"><strong>地区覆盖与来源边界</strong><p>本版有 {len(regions)} 个代表性地区资格记录，覆盖北美、欧洲、亚洲、大洋洲和回国求职。非洲、南美洲不纳入。并未穷尽其余全部国家。岗位网页可读不等于仍在招，也不等于接受你的工作资格。</p><a href="regions.html">查看访问限制、日期冲突与待确认事项 →</a></div></section>{consult()}</div>'''
@@ -545,6 +554,10 @@ def main():
     for f in (ROOT/'site-assets').iterdir():
         if f.is_file():shutil.copy2(f,OUT/'assets'/f.name)
     (OUT/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#152725"/><path d="M18 47 29 17h7l11 30h-8l-2-7H28l-2 7zm12-14h5l-2-9z" fill="#e5eddb"/></svg>',encoding='utf-8')
+    preview = ROOT/'assets'/'social-preview.png'
+    if not preview.is_file():
+        raise SystemExit('assets/social-preview.png is required for the published social card')
+    shutil.copy2(preview, OUT/'assets'/'social-preview.png')
     collect_pages();copy_sources()
     jd=read_json('research/employer-jds.json',{});policy=read_json('research/regional-rules.json',{});summary=read_json('examples/verification-summary.json',{})
     search_data=[dict(title=p['title'],url=p['url'],text=p['plain'],section=p['section']) for p in PAGES.values()]

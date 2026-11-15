@@ -71,5 +71,4 @@
 - 至少一项失败有可复现输入，至少一项限制写清。
 - 不把教程基线、AI草稿或团队成果全部归为本人独立贡献。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

@@ -458,7 +458,7 @@ def draw_cover(canvas, doc):
     canvas.setFillColor(TEAL)
     canvas.rect(0, PAGE_H - 12, PAGE_W, 12, fill=1, stroke=0)
     canvas.setFont("GuideSC-Bold", 12)
-    canvas.drawString(LEFT, PAGE_H - 62, "AI 酋长 Andy")
+    canvas.drawString(LEFT, PAGE_H - 62, "AI酋长Andy")
     canvas.setFont("GuideSC", 9)
     canvas.drawRightString(PAGE_W - RIGHT, PAGE_H - 62, "OPEN SOURCE · 2026.11")
     canvas.setStrokeColor(LINE)
@@ -500,10 +500,8 @@ def draw_cover(canvas, doc):
     canvas.setFont("GuideSC", 12)
     canvas.drawString(LEFT, 245, "先读懂岗位，再建立经得起追问的证据。")
     canvas.setFont("GuideSC", 10)
-    for index, line in enumerate(("作者：AI 酋长 Andy", "微信：AIPMAndy   /   公众号：AI酋长Andy", "个人官网：https://metaver.vip/", "公司官网：https://www.a6no1.cn/")):
+    for index, line in enumerate(("作者：AI酋长Andy", "星觉科技 · 北京", "微信号：AIPMAndy")):
         canvas.drawString(LEFT, 198 - index * 23, line)
-    canvas.linkURL("https://metaver.vip/", (LEFT, 145, LEFT + 280, 162), relative=0)
-    canvas.linkURL("https://www.a6no1.cn/", (LEFT, 122, LEFT + 290, 139), relative=0)
     canvas.setStrokeColor(colors.HexColor("#46564D"))
     canvas.line(LEFT, 77, PAGE_W - RIGHT, 77)
     canvas.setFillColor(colors.HexColor("#B8C7BE"))
@@ -525,7 +523,7 @@ def draw_page(canvas, doc):
     canvas.line(LEFT, PAGE_H - 39, PAGE_W - RIGHT, PAGE_H - 39)
     canvas.line(LEFT, 37, PAGE_W - RIGHT, 37)
     canvas.setFont("GuideSC", 7.8)
-    canvas.drawString(LEFT, 23, "AI 酋长 Andy  ·  微信 AIPMAndy")
+    canvas.drawString(LEFT, 23, "AI酋长Andy  ·  星觉科技 · 北京 · 微信号 AIPMAndy")
     canvas.setFillColor(TEAL)
     canvas.setFont("GuideSC-Bold", 9)
     canvas.drawRightString(PAGE_W - RIGHT, 22, f"{doc.page:02d}")
@@ -536,7 +534,7 @@ class GuideDoc(BaseDocTemplate):
     def __init__(self, filename: str):
         super().__init__(filename, pagesize=A4, leftMargin=LEFT, rightMargin=RIGHT,
                          topMargin=TOP, bottomMargin=BOTTOM, title="中国留学生 AI 岗位求职保姆级攻略",
-                         author="AI 酋长 Andy", subject="AI岗位判断、能力差距、可验证项目与技术面试",
+                         author="AI酋长Andy", subject="AI岗位判断、能力差距、可验证项目与技术面试",
                          pageCompression=1, allowSplitting=1)
         self.addPageTemplates([
             PageTemplate(id="Cover", frames=[Frame(LEFT, BOTTOM, WIDTH, HEIGHT, leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)], onPage=draw_cover),
@@ -603,7 +601,7 @@ def build_story(files: list[tuple[str, Path]]) -> tuple[list[Flowable], list[str
     meta = ROOT / "README.md"
     story.append(static_heading("这本手册怎么用", "about-this-guide"))
     story.append(paragraph("先判断目标岗位，再补能力证据。你可以独立使用本册；不需要先读完其他专题。", meta))
-    story.append(paragraph("作者：AI 酋长 Andy。前腾讯、百度 AI 产品专家，前大模型公司 VP。提供求职咨询、AI 转型与陪跑服务。", meta))
+    story.append(paragraph("作者：AI酋长Andy，星觉科技，北京。流量 AI 联合创始人、星觉 AI 创始人。提供求职咨询、AI 转型与陪跑服务。", meta))
     story.append(paragraph("版本日期：2026-11-13。岗位与地区规则以各来源的核验状态为准；申请前重新打开原文。公开页面可读，不代表岗位仍有名额或雇主接受每一种身份。", meta))
     story.append(paragraph("本书的三个技术案例全部是教学模拟。代码、输入、评测和失败样本完整开放；不虚构客户、Offer、薪资、成功率或商业成绩。", meta))
     story.append(paragraph("覆盖北美、欧洲、亚洲、大洋洲与中国籍留学生回国场景。对尚未核实的国家、岗位和政策条款，明确列在缺口清单中；不声称穷尽所有地区。非洲、南美洲不在本项目范围。", meta))
@@ -615,7 +613,7 @@ def build_story(files: list[tuple[str, Path]]) -> tuple[list[Flowable], list[str
         ["投了很多却不知道卡在哪里", "09 复盘 → 投递台账、面试清单与失败分析模板"],
     ], meta))
     story.append(paragraph("免费内容完整开放。咨询入口承接岗位判断、项目诊断与求职陪跑，不承诺录用结果。", meta))
-    story.append(paragraph("微信：AIPMAndy · 公众号：AI酋长Andy\n个人官网：https://metaver.vip/\n公司官网：https://www.a6no1.cn/", meta))
+    story.append(paragraph("微信号：AIPMAndy。星觉科技，北京。", meta))
     story.append(paragraph("解压源码 ZIP 后，按“源码包内”路径打开对应文件。代码许可见 LICENSE-CODE；合成数据许可见 examples/DATA-LICENSE.md。正文与第三方来源按仓库许可说明使用；第三方招聘原文、政策、商标与论文的权利归相应权利人。", meta, "small"))
     story.append(PageBreak())
     story.append(Paragraph("目录", STYLES["h1"]))
@@ -656,14 +654,14 @@ def build_story(files: list[tuple[str, Path]]) -> tuple[list[Flowable], list[str
             Paragraph(f'<link href="{html.escape(url, quote=True)}" color="#126653">{html.escape(clean(url))}</link>', STYLES["small"]),
             Spacer(1, 4),
         ]))
-    story.extend([Spacer(1, 16), Rule(), paragraph("作者：AI 酋长 Andy · 微信：AIPMAndy · 公众号：AI酋长Andy", meta), paragraph("个人官网：https://metaver.vip/ · 公司官网：https://www.a6no1.cn/", meta)])
+    story.extend([Spacer(1, 16), Rule(), paragraph("作者：AI酋长Andy · 星觉科技 · 北京 · 微信号：AIPMAndy", meta)])
     return story, included
 
 
 def inspect_pdf(path: Path, files: list[tuple[str, Path]], screenshots: list[str]) -> dict:
     reader = PdfReader(str(path))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    required = ["中国留学生", "AI 岗位求职", "AI 酋长 Andy", "AIPMAndy", "AI酋长Andy", "metaver.vip", "a6no1.cn"]
+    required = ["中国留学生", "AI 岗位求职", "AI酋长Andy", "AIPMAndy", "星觉科技", "流量 AI 联合创始人"]
     missing = [item for item in required if item not in text]
     if missing:
         raise ValueError(f"PDF text checks failed: {missing}")

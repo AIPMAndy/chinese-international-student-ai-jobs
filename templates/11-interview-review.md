@@ -48,5 +48,4 @@
 - 改进动作能在下一次不同练习中检验。
 - 一次结果不被泛化为行业结论或录用概率。
 
-作者：AI 酋长 Andy｜微信：AIPMAndy｜公众号：AI酋长Andy  
-个人官网：https://metaver.vip/ ｜公司官网：https://www.a6no1.cn/
+作者：AI酋长Andy｜星觉科技 · 北京 · 微信号：AIPMAndy  

@@ -34,7 +34,7 @@ python3 scripts/check_pages_links.py --require downloads/chinese-international-s
 
 ## 部署已验收产物
 
-工作流检查并上传提交中的 `dist/`。发布阶段不重新生成中文 PDF，也不执行依赖当前工作区路径的构建。内容修改后先按项目原有构建说明更新和验收 `dist/`，再提交；这样部署的文件与本地验收对象一致。
+自 2026-11-14 起，Pages 工作流从最新源代码、Markdown、研究资料与网站资产重新生成 dist，再重新打包源码/模板/网站 ZIP；执行 SEO 和 Pages 链接检查，部署同一构建环境的产物，并对 10 个线上 URL 逐一进行 HTTP 200、文件签名和 SHA-256 读回校验。PDF 二进制继续来自 pdf/ 且本轮未改正文；若修改了正文，先执行 PDF 的源文档生成与视觉 QA。仓库中的 dist 只是之前构建的快照，不可用旧 SHA 代替新上线产物。
 
 工作流限制为本项目精确仓库的 `main`，支持 push 和手动触发，使用 `github-pages` 环境。全局仅授予 `contents: read`，部署任务额外取得 `pages: write` 和 `id-token: write`。
 
@@ -55,3 +55,11 @@ python3 scripts/check_pages_links.py --require downloads/chinese-international-s
 
 - [GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [配置 Pages 发布源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+## 2026-11-14 · 源码驱动发布复核
+
+- 新增：每页 canonical、Open Graph、合法 JSON-LD（WebPage、作者、公司）、robots 和完整 sitemap；增加 [咨询与陪跑](https://metaver.vip/services) 入口，保留原有搜索、JD 筛选、自查与教学代码。
+- [生成器提交 9a33276](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/commit/9a3327631038c1bfe1caf1138371538db9c3db06)、[SEO 测试 a1015d5](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/commit/a1015d51b5bf0f7d6fe1221ab673ec3776fac184)、[Pages 验证提交 7bfe19c](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/commit/7bfe19ccc19ba8f443a5a4e8d46c76ddfb0857b6)。[Pages #43520404300](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/actions/runs/43520404300) 成功：52 页 SEO 元数据检查零错误；首页、岗位、地区、PDF、两个 ZIP、sitemap、robots、CSS、JS 共 10 个线上资源 HTTP 200，SHA-256 与该轮生成产物相同。
+- 初始教学 CI 因提交后的旧源码 ZIP 与源文件版本不一致报出 stale input，已修正为先执行教学案例/风险测试，再从源码生成站点与归档，最后核对完整性。[修正提交 0785a74](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/commit/0785a7434cf5a8989de629261b8ade4b75fa5167) 和 [教学 CI #43520496459](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/actions/runs/43520496459) 已成功，未跳过原测试。
+- PDF 当前在线 SHA-256：f07ee347ff51ccb8e6a870cf6ed178065384262aa39937985cdd081682e14d0e，973178 字节；与 [109 页视觉 QA](pdf/visual-review.json) 的 SHA 一致。PDF 正文未修改。
+- 最终提交 [0785a74 对应 Pages 运行](https://github.com/AIPMAndy/chinese-international-student-ai-jobs/actions/runs/43520496423) 需再记录成功与 HTTP 结果。移动 Safari / 安卓及新近政策独立复核待完成，项目暂不标全部 DONE。
