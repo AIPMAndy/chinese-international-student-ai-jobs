@@ -1,0 +1,32 @@
+name: Browser QA – AI jobs filters
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium browser tooling
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Generate authoritative site and downloadable bundles
+        run: |
+          python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+          python3 scripts/package_release.py
+          python3 scripts/check_seo.py
+          python3 scripts/check_pages_links.py --require downloads/chinese-international-student-ai-jobs-guide.pdf --require downloads/templates.zip --require downloads/chinese-international-student-ai-jobs-source.zip
+      - name: Test responsive filters in real Chromium
+        run: |
+          python3 -m http.server 8765 --directory dist > /tmp/ai-jobs-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          node tests/browser_smoke.cjs
