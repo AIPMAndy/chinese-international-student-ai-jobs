@@ -10,7 +10,37 @@
   if(readButton){const key='ai-jobs-read:'+readButton.dataset.chapter;const update=()=>{const done=storage.get(key)==='1';readButton.textContent=done?'已读 · 取消标记':'标记已读';readButton.setAttribute('aria-pressed',String(done));};update();readButton.addEventListener('click',()=>{const done=storage.get(key)==='1';if(storage.set(key,done?'0':'1'))update();else{readButton.textContent=done?'标记已读':'本次已读（浏览器未保存）';readButton.setAttribute('aria-pressed',String(!done));}});}
   $$('[data-read-status]').forEach(el=>{if(storage.get('ai-jobs-read:'+el.dataset.readStatus)==='1')el.textContent='已读';});
   $$('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(button.dataset.copy);button.textContent='已复制';}catch(e){button.textContent='请长按复制 AIPMAndy';}}));
-  function filterCards(kind){const cards=$$('.'+kind+'-card');if(!cards.length)return;const q=$('#filter-query'),country=$('#filter-region'),route=$('#filter-route'),check=$('#filter-verified'),count=$('#filter-count'),empty=$('#filter-empty');function run(){const needle=(q?q.value:'').trim().toLocaleLowerCase();let n=0;cards.forEach(card=>{let show=(!needle||card.dataset.search.toLocaleLowerCase().includes(needle))&&(!country||!country.value||card.dataset.region===country.value)&&(!route||!route.value||card.dataset.route===route.value)&&(!check||!check.checked||card.dataset.verified==='yes');card.hidden=!show;if(show)n++;});if(count)count.textContent='显示 '+n+' / '+cards.length+' 条'+(kind==='job'?'岗位研究记录':'地区资格记录');if(empty)empty.hidden=n!==0;}[q,country,route,check].filter(Boolean).forEach(el=>el.addEventListener(el.tagName==='INPUT'&&el.type!=='checkbox'?'input':'change',run));run();}
+  function filterCards(kind){
+    const cards=$$('.'+kind+'-card');
+    if(!cards.length)return;
+    const q=$('#filter-query'),country=$('#filter-region'),route=$('#filter-route');
+    const check=$('#filter-verified'),count=$('#filter-count'),empty=$('#filter-empty'),reset=$('#filter-reset');
+    function run(){
+      const needle=(q?q.value:'').trim().toLocaleLowerCase();
+      let n=0;
+      cards.forEach(card=>{
+        const show=(!needle||card.dataset.search.toLocaleLowerCase().includes(needle))&&
+          (!country||!country.value||card.dataset.region===country.value)&&
+          (!route||!route.value||card.dataset.route===route.value)&&
+          (!check||!check.checked||card.dataset.verified==='yes');
+        card.hidden=!show;
+        if(show)n++;
+      });
+      if(count)count.textContent='显示 '+n+' / '+cards.length+' 条'+(kind==='job'?'岗位研究记录':'地区资格记录');
+      if(empty)empty.hidden=n!==0;
+      if(reset)reset.disabled=!(Boolean(needle)||(country&&country.value)||(route&&route.value)||(check&&check.checked));
+    }
+    [q,country,route,check].filter(Boolean).forEach(el=>el.addEventListener(el.tagName==='INPUT'&&el.type!=='checkbox'?'input':'change',run));
+    if(reset)reset.addEventListener('click',()=>{
+      if(q)q.value='';
+      if(country)country.value='';
+      if(route)route.value='';
+      if(check)check.checked=false;
+      run();
+      if(q)q.focus();
+    });
+    run();
+  }
   filterCards('job');filterCards('region');
   const wizard=$('#route-wizard');
   if(wizard){wizard.addEventListener('submit',event=>{event.preventDefault();const v=Object.fromEntries(new FormData(wizard).entries());const result=$('#wizard-result');let title='',reason='',actions=[],link='read/docs-02-gap-and-learning.html';if(v.programming==='none'){title='先建立编程证据，再选技术主线';reason='目前的信息不足以支持直接申请需要独立编码的 AI 技术岗位。先完成一个可自行修改、调试并解释的基础项目，再重新判断。';actions=['独立读取 JSON/CSV、编写函数，并解释报错。','运行第一个教学样例，改一条输入，找到对应输出。','把“照步骤运行”和“自己实现”分开记录。'];}else if(v.programming==='basic'){title='先补一段完整的工程链路';reason='会课程代码是起点。下一步要证明你能从输入、处理到测试独立完成一个小任务。暂不把研究或工程岗位的硬门槛当作已满足。';actions=['选一个目标 JD，列出三项必需能力及对应证据。','补 Python 调试、数据结构和测试；完成样例二的输入校验。','能不用提示解释一次失败后，再决定算法、工程或应用主线。'];}else if(v.preference==='research'&&v.math==='strong'&&v.research==='independent'){title='优先研究算法 / 机器学习路线';reason='你提供的基础允许开始逐 JD 对照研究或应用机器学习要求。研究型岗位还必须核对具体学历、研究方向和个人贡献；自查结果不表示通过招聘门槛。';actions=['把一项研究写成问题、基线、方法、实验、失败与限制。','按目标方向补对照与消融，证明结果不是数据泄漏。','逐岗位核对论文、学位、毕业时间与专业要求。'];link='read/docs-01-role-map.html';}else if(v.math==='strong'&&(v.preference==='research'||v.preference==='models')){title='优先研究应用机器学习路线';reason='编程与数学基础可用于建模和实验准备。没有独立研究证据时，先证明数据、基线、验证和误差分析，不把调用模型写成研究创新。';actions=['完成样例一，解释训练/验证/测试为何分开。','添加一个可比较基线和一次单变量实验。','把数据来源、个人贡献和测试集限制写进项目卡。'];link='read/docs-01-role-map.html';}else if(v.preference==='systems'){title='优先研究 AI 工程路线';reason='把现有编码能力用于模型服务、数据接口与系统可靠性。训练基础设施、GPU 或编译方向仍需要额外专项能力，不能由此直接推定适配。';actions=['完成样例二：正常请求、错误请求、版本与健康检查。','分别记录模型质量和服务延迟，说明硬件与请求条件。','准备一次回滚、超时和并发资源问题的讲解。'];link='projects.html#service';}else{title='优先研究 AI 应用工程路线';reason='先证明你能把检索或模型能力接入任务，并对效果与失败负责。应用工程仍要求独立开发、调试与评测能力。';actions=['完成样例三，分别看检索命中、最终结果和拒答。','加入一个原有样例没有覆盖的问题，保留失败分析。','能解释什么时候用确定性代码、检索或模型，以及权限边界。'];link='projects.html#retrieval';}

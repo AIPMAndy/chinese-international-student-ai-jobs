@@ -74,6 +74,8 @@ def main():
             errors.append(f'{path}: og:image dimensions {meta.og.get("og:image:width")!r}x{meta.og.get("og:image:height")!r}')
         if meta.twitter.get('twitter:card') != 'summary_large_image':
             errors.append(f'{path}: twitter:card {meta.twitter.get("twitter:card")!r}')
+        if meta.twitter.get('twitter:image') != image:
+            errors.append(f'{path}: twitter:image {meta.twitter.get("twitter:image")!r}')
         if len(meta.scripts) != 1:
             errors.append(f'{path}: JSON-LD count {len(meta.scripts)}')
             continue

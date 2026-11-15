@@ -330,6 +330,7 @@ def layout(page_url, title, body, active='', search=False):
         f'<meta property="og:image:width" content="1280">'
         f'<meta property="og:image:height" content="640">'
         f'<meta name="twitter:card" content="summary_large_image">'
+        f'<meta name="twitter:image" content="{image}">'
         f'<script type="application/ld+json">{jsonld}</script>'
     )
     return f'''<!doctype html>

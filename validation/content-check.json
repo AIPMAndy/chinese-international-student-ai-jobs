@@ -14,7 +14,7 @@
     },
     {
       "name": "chinese-international-student-ai-jobs-source.zip",
-      "members": 156
+      "members": 158
     },
     {
       "name": "chinese-international-student-ai-jobs-website.zip",
@@ -25,7 +25,7 @@
   "status": "passed",
   "external_links": "Primary source access statuses recorded in research; not a blanket assertion that every external URL is currently reachable.",
   "archive_input_checks": {
-    "source_input_files": 79,
+    "source_input_files": 80,
     "website_files": 150,
     "website_checksums": 3
   }

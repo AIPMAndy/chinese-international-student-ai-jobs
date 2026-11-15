@@ -3,23 +3,23 @@
   "artifacts": [
     {
       "file": "chinese-international-student-ai-jobs-guide.pdf",
-      "bytes": 973178,
-      "sha256": "f07ee347ff51ccb8e6a870cf6ed178065384262aa39937985cdd081682e14d0e"
+      "bytes": 961066,
+      "sha256": "f4717501e7e22b56a7ebacee607d7bfd46be0acc7213a68dc2b078dabd08fe56"
     },
     {
       "file": "templates.zip",
       "bytes": 32884,
-      "sha256": "191ac2a055cb70db80883548097c39ed7ebfa742ee1b891b264cf3472be3fadf"
+      "sha256": "7a571fd58cf88f8eb95c971940a576784a709ff5e27d9ad2793c3e4796238652"
     },
     {
       "file": "chinese-international-student-ai-jobs-source.zip",
-      "bytes": 2119451,
-      "sha256": "b1c490b9be9c1b94e7a423e69212c41b996f75b25c5a95444728dc980f8e3eab"
+      "bytes": 2120271,
+      "sha256": "b96bc222543f1b67ba73521949a56642a1a9ca9ed44f38de457bf8f9a31369b5"
     },
     {
       "file": "chinese-international-student-ai-jobs-website.zip",
-      "bytes": 4149644,
-      "sha256": "914d9c4798f1ec990fc845c8d1be0eb2ad6af089297ea59c00a60a80245765e4"
+      "bytes": 4148831,
+      "sha256": "78437e05bcb9c94e3268f1823400c4d770194d1953c8e0da6a2fdf69baf17330"
     }
   ]
 }
