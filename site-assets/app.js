@@ -15,6 +15,18 @@
     if(!cards.length)return;
     const q=$('#filter-query'),country=$('#filter-region'),route=$('#filter-route');
     const check=$('#filter-verified'),count=$('#filter-count'),empty=$('#filter-empty'),reset=$('#filter-reset');
+    const exportButton=kind==='job'?$('#filter-export'):null;
+    const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    if(kind==='job'){
+      cards.forEach(card=>{
+        const match=(card.dataset.jobDeadline||'').match(/20\d{2}-\d{2}-\d{2}/);
+        const warning=card.querySelector('.deadline-audit');
+        if(match&&match[0]<today&&warning){
+          warning.textContent='资料标注的截止日 '+match[0]+' 已过。请重新阅读雇主原文核对，不能据此断定岗位关闭。';
+          warning.hidden=false;
+        }
+      });
+    }
     function run(){
       const needle=(q?q.value:'').trim().toLocaleLowerCase();
       let n=0;
@@ -28,6 +40,7 @@
       });
       if(count)count.textContent='显示 '+n+' / '+cards.length+' 条'+(kind==='job'?'岗位研究记录':'地区资格记录');
       if(empty)empty.hidden=n!==0;
+      if(exportButton)exportButton.disabled=n===0;
       if(reset)reset.disabled=!(Boolean(needle)||(country&&country.value)||(route&&route.value)||(check&&check.checked));
     }
     [q,country,route,check].filter(Boolean).forEach(el=>el.addEventListener(el.tagName==='INPUT'&&el.type!=='checkbox'?'input':'change',run));
@@ -38,6 +51,38 @@
       if(check)check.checked=false;
       run();
       if(q)q.focus();
+    });
+    if(exportButton)exportButton.addEventListener('click',()=>{
+      const visible=cards.filter(card=>!card.hidden);
+      if(!visible.length)return;
+      const plain=value=>String(value||'未说明').replace(/[\r\n\t]+/g,' ').trim();
+      const lines=[
+        'AI 岗位研究 · 待核验清单（仅供个人求职研究）',
+        '导出日期（北京时间）：'+today,
+        '当前筛选：'+visible.length+' / '+cards.length+' 条',
+        '重要：此表是历史岗位研究，不代表岗位仍开放。截止日已过不等于雇主确认关闭；身份、签证支持和实际申请条件须逐条以原文为准。',
+        ''
+      ];
+      visible.forEach((card,index)=>{
+        const match=(card.dataset.jobDeadline||'').match(/20\d{2}-\d{2}-\d{2}/);
+        const past=Boolean(match&&match[0]<today);
+        lines.push(
+          (index+1)+'. '+plain(card.dataset.jobId)+' · '+plain(card.querySelector('h2')?.textContent),
+          '公司/级别：'+plain(card.querySelector('.job-company')?.textContent),
+          '地区/路线：'+plain(card.dataset.region)+' / '+plain(card.dataset.route),
+          '资料状态：'+(card.dataset.verified==='yes'?'历史官方详情可读':'仅索引可读，必须进一步核实'),
+          '资料标注截止：'+plain(card.dataset.jobDeadline)+(past?'【原记载日期已过，须复查】':''),
+          '历史核验日：'+plain(card.dataset.jobChecked),
+          '雇主原文：'+plain(card.dataset.jobUrl),
+          '行动：先查是否仍接受申请、毕业窗口与身份许可，再准备能力和项目证据。',
+          ''
+        );
+      });
+      lines.push('作者：AI酋长Andy · 星觉科技','微信：AIPMAndy','个人官网：https://metaver.vip/','公司官网：https://www.a6no1.cn/','咨询与陪跑：https://metaver.vip/services','本清单未上传任何浏览器输入。');
+      const url=URL.createObjectURL(new Blob(['\uFEFF'+lines.join('\n')+'\n'],{type:'text/plain;charset=utf-8'}));
+      const a=document.createElement('a');
+      a.href=url;a.download='AI岗位研究核验清单-'+today+'.txt';document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),5000);
     });
     run();
   }
