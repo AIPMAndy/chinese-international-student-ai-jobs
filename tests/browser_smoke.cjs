@@ -3,12 +3,13 @@
 // Chromium responsive + accessibility/interaction regression against generated Pages output.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
 (async()=>{
   const browser=await chromium.launch({headless:true});
   try{
     for(const width of [360,390,1280]){
-      const page=await browser.newPage({viewport:{width,height:850}});
+      const page=await browser.newPage({viewport:{width,height:850},acceptDownloads:true});
       for(const [path,card] of [['jobs.html','.job-card'],['regions.html','.region-card']]){
         await page.goto(base+path,{waitUntil:'load'});
         const all=await page.locator(card).count();
@@ -38,12 +39,29 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
           await reset.click();
           assert.equal(await page.locator('#filter-region').inputValue(),'');
         }
+
+        if(path==='jobs.html'){
+          assert.equal(await page.locator('#filter-export').count(),1,'job audit download exists');
+          assert.equal(await page.locator('#filter-export').isDisabled(),false,'visible records can be exported');
+          await query.fill('Graphcore');
+          assert.equal(await page.locator('.job-card:visible').count(),1);
+          assert.equal(await page.locator('.job-card:visible .deadline-audit').isVisible(),true,'past recorded deadline must be flagged');
+          assert.match(await page.locator('.job-card:visible .deadline-audit').innerText(),/2026-11-15/);
+          const wait=page.waitForEvent('download');
+          await page.locator('#filter-export').click();
+          const download=await wait;
+          assert.match(download.suggestedFilename(),/^AI岗位研究核验清单-\d{4}-\d{2}-\d{2}\.txt$/);
+          const content=fs.readFileSync(await download.path(),'utf8');
+          for(const term of ['Graphcore','JD-UK-01','2026-11-15','2026-11-13','job-boards.greenhouse.io','AIPMAndy','metaver.vip','a6no1.cn'])assert.ok(content.includes(term),'missing export field '+term);
+          assert.ok(!content.includes('Atlassian'),'filtered export should not include nonmatching records');
+          await reset.click();
+        }
         assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),true,'no horizontal overflow at '+width);
         assert.match(await page.locator('footer').innerText(),/AIPMAndy/);
         assert.match(await page.locator('footer').innerText(),/a6no1.cn/);
       }
       await page.close();
     }
-    console.log('PASS: AI jobs and region filters, reset, accessible state and 360/390/1280px views');
+    console.log('PASS: source-dated JD deadline cautions, UTF-8 filtered TXT export, both filters, 360/390/1280px');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
