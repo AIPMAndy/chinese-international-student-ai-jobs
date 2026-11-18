@@ -12,3 +12,12 @@
 .filter-reset:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .filter-reset:disabled{opacity:.45;cursor:default}
 @media(max-width:600px){.filter-reset{width:100%;justify-content:center}}
+
+
+/* JD research: visible, source-dated warnings and accessible offline audit export. */
+.filter-export{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:650}
+.filter-export:hover:not(:disabled){background:var(--green);color:#fff}
+.deadline-audit{margin:15px 0 0;padding:11px 13px;border-left:3px solid #a36c28;background:#fcf7ee;color:#674318;font-size:12px;line-height:1.7}
+.deadline-audit[hidden]{display:none!important}
+@media(max-width:600px){.filter-export{width:100%;white-space:normal;text-align:center}}
+@media print{.filter-export{display:none!important}}
