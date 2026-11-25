@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      actions: read
       pages: write
       id-token: write
     environment:
@@ -42,9 +43,34 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+          name: github-pages-${{ github.run_attempt }}
+      - name: Wait for current attempt artifact to become visible
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 12); do
+            if count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$ARTIFACT_NAME" --jq '[.artifacts[] | select(.expired == false)] | length'); then
+              if [ "$count" = 1 ]; then
+                echo "Current attempt artifact is visible: $ARTIFACT_NAME"
+                exit 0
+              fi
+              if [ "$count" -gt 1 ]; then
+                echo "Unexpected duplicate artifacts: $ARTIFACT_NAME" >&2
+                exit 1
+              fi
+            fi
+            echo "Waiting for artifact visibility ($attempt/12)"
+            sleep 5
+          done
+          echo "Current attempt artifact was not visible within the bounded retry window" >&2
+          exit 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
       - name: Verify public HTTP, PDF and download links
         env:
           LIVE_URL: ${{ steps.deployment.outputs.page_url }}
@@ -60,6 +86,7 @@ jobs:
           checks = [
               ("", b"<!doctype html>"),
               ("jobs.html", b"<!doctype html>"),
+              ("self-check.html", b"<!doctype html>"),
               ("regions.html", b"<!doctype html>"),
               ("downloads/chinese-international-student-ai-jobs-guide.pdf", b"%PDF-"),
               ("downloads/templates.zip", b"PK\x03\x04"),
