@@ -60,6 +60,28 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         assert.match(await page.locator('footer').innerText(),/AIPMAndy/);
         assert.match(await page.locator('footer').innerText(),/a6no1.cn/);
       }
+      await page.emulateMedia({reducedMotion:'reduce'});
+      await page.goto(base+'self-check.html',{waitUntil:'load'});
+      const wizard=page.locator('#route-wizard');
+      const result=page.locator('#wizard-result');
+      for(const [name,value] of Object.entries({eligibility:'confirmed',programming:'independent',math:'strong',research:'independent',preference:'research'})){
+        await wizard.locator('#'+name).selectOption(value);
+      }
+      await wizard.locator('button[type=submit]').click();
+      assert.match(await result.innerText(),/你已自报完成资格核查/);
+      const eligibility=wizard.locator('#eligibility');
+      await eligibility.focus();
+      await eligibility.selectOption('blocked');
+      assert.match(await result.innerText(),/之前的判断已失效/);
+      assert.equal(await result.locator('a').count(),0,'old actionable links removed');
+      assert.equal(await eligibility.evaluate(el=>document.activeElement===el),true,'editing focus retained');
+      await wizard.locator('button[type=submit]').click();
+      assert.match(await result.innerText(),/本轮先排除该岗位的资格障碍/);
+      await wizard.locator('#programming').selectOption('');
+      assert.match(await result.innerText(),/之前的判断已失效/);
+      await wizard.locator('button[type=submit]').click();
+      assert.match(await result.innerText(),/之前的判断已失效/,'invalid form cannot recreate recommendation');
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),true,'self check no horizontal overflow');
       await page.close();
     }
     console.log('PASS: source-dated JD deadline cautions, UTF-8 filtered TXT export, both filters, 360/390/1280px');
