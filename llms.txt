@@ -1,0 +1,86 @@
+# 中国留学生 AI 岗位求职保姆级攻略
+
+> 中国留学生 AI 技术岗求职攻略：算法、AI 工程与应用工程，含可运行练习与 PDF。不承诺录用。
+
+- 作者：AI酋长Andy（AIPMAndy），官网 https://metaver.vip/
+- 开源仓库：https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+- 在线地址：https://aipmandy.github.io/chinese-international-student-ai-jobs/
+- 许可：代码 MIT / 内容 CC BY 4.0
+- 语言：中文（zh-CN）
+- 最近更新：2026-11-25
+
+## 这是什么
+
+岗位判断 → 技术能力差距 → 可验证项目 → 技术面试 → 定向申请与复盘。
+作者：AI酋长Andy。版本 1.0.0，资料核验日期 2026-11-13。
+
+## 主要页面
+
+- [资料下载与模板 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/downloads.html)
+- [完整攻略 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/guide.html)
+- [中国留学生 AI 岗位求职保姆级攻略 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/)
+- [真实雇主岗位库 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/jobs.html)
+- [技术项目实测报告 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/projects.html)
+- [作者、贡献与 AI 辅助声明 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/AUTHORSHIP.html)
+- [如何补充和纠错 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/CONTRIBUTING.html)
+- [GitHub Pages 部署 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/DEPLOYMENT.html)
+- [原创内容许可：CC BY 4.0 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/LICENSE-CONTENT.html)
+- [发布与重建 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/PUBLISH.html)
+- [中国留学生 AI 岗位求职保姆级攻略 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/README.html)
+- [验证记录 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/VALIDATION.html)
+- [00｜先把目标缩到一个能验证的岗位 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-00-start.html)
+- [01｜按实际工作区分 AI 岗位 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-01-role-map.html)
+- [02｜从自己的基础，走到一条可申请路线 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-02-gap-and-learning.html)
+- [03｜把已有经历变成可信证据 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-03-evidence.html)
+- [04｜做一个可验证的技术项目 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-04-project-workflow.html)
+- [05｜把项目变成 GitHub、简历与面试证据 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-05-portfolio-and-resume.html)
+- [06｜技术面试：按岗位练，不背一份万能题库 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-06-technical-interviews.html)
+- [07｜地区、毕业时间与雇主资格分别核查 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-07-region-and-eligibility.html)
+- [08｜定向申请：用同一套证据回答这条 JD · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-08-targeted-applications.html)
+- [09｜用投递和面试记录，定位下一步 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-09-review-and-next-steps.html)
+- [技术案例：从“跑得动”到“证据可信” · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/docs-technical-case-studies.html)
+- [01｜把一个小模型做成可信的实验 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/examples-01_ml_experiment-README.html)
+- [02｜把模型交给一个真实 HTTP 接口 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/examples-02_model_service-README.html)
+- [03｜有引用，不代表回答正确 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/examples-03_grounded_retrieval-README.html)
+- [教学输入的数据许可与来源 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/examples-DATA-LICENSE.html)
+- [三个能运行、能解释、能查错的技术样例 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/examples-README.html)
+- [覆盖缺口与更新队列 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-coverage-gaps.html)
+- [真实雇主 JD 研究表 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-employer-jds.html)
+- [JD 来源核验记录 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-jd-source-notes.html)
+- [地区资格与招聘时间：分开核查 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-regional-rules.html)
+- [新旧仓库内容边界与只读审查 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-repository-boundary.html)
+- [技术方法来源 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/research-technical-sources.html)
+- [01｜岗位研究与申请前核验 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-01-job-research.html)
+- [02｜能力差距表 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-02-capability-gap.html)
+- [03｜学习行动与每周交付 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-03-learning-actions.html)
+- [04｜技术项目 README 模板 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-04-project-readme.html)
+- [05｜实验与评测记录 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-05-evaluation-log.html)
+- [06｜失败样本与根因验证 · AI酋长Andy](https://aipmandy.github.io/chinese-international-student-ai-jobs/read/templates-06-failure-analysis.html)
+
+## 内容目录
+
+- 直接开始
+- 这版实际包含什么
+- 三条路线
+- 一条命令跑完技术练习
+- 阅读目录
+- 与既有项目的边界
+- 事实与更新
+- 许可与贡献
+- 作者与可选咨询
+
+## 关键事实
+
+- 名称：中国留学生 AI 岗位求职保姆级攻略
+- 类型：中文开源项目
+- 许可：代码 MIT / 内容 CC BY 4.0
+- 语言：中文
+- 最近更新：2026-11-25
+- 仓库：https://github.com/AIPMAndy/chinese-international-student-ai-jobs
+
+## 相关链接
+
+- [作者官网](https://metaver.vip/)
+- [GitHub 主页](https://github.com/AIPMAndy/AIPMAndy)
+- [开源总目录](https://aipmandy.github.io/)
+- [机器可读摘要](https://aipmandy.github.io/chinese-international-student-ai-jobs/llms.txt)

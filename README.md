@@ -8,6 +8,29 @@
 
 > 免费正文、代码与模板完整开放。不需要加微信或购买服务。本版不使用未经核实与公开授权的客户学校、Offer、薪资或成功率。所有候选人情境和技术输入均明确标为教学模拟，不承诺录用。
 
+<!-- andy-geo:start -->
+## 一句话简介
+
+**中国留学生 AI 技术岗求职攻略：算法、AI 工程与应用工程，含可运行练习与 PDF。不承诺录用。**
+
+- 作者：AI酋长Andy（Andy Liu，英文名 AI Chief Andy），流量 AI 联合创始人、星觉 AI 创始人。星觉科技，北京。
+- 阅读或使用：[在线阅读/使用](https://aipmandy.github.io/chinese-international-student-ai-jobs/) · [GitHub 仓库](https://github.com/AIPMAndy/chinese-international-student-ai-jobs)
+- 联系：微信 `AIPMAndy`（备注「chinese-international-student-ai-jobs」）· [官网 metaver.vip](https://metaver.vip/) · [X @AIPMAndy](https://x.com/AIPMAndy)
+- 许可：代码 MIT / 内容 CC BY 4.0。内容免费使用；企业合作或个人陪跑请先沟通，公开页不公示价格。
+- 机器可读摘要：[llms.txt](llms.txt)（供 AI 引擎与检索工具读取）
+
+## 常见问题
+
+**这是什么？**中国留学生 AI 岗位求职保姆级攻略：中国留学生 AI 技术岗求职攻略：算法、AI 工程与应用工程，含可运行练习与 PDF。不承诺录用。
+
+**包含什么？**主要模块：直接开始、这版实际包含什么、三条路线、一条命令跑完技术练习、阅读目录、与既有项目的边界。
+
+**要花钱吗？**按 代码 MIT / 内容 CC BY 4.0 许可免费使用；付费只涉及作者的企业合作与一对一咨询，不影响仓库内容。
+
+**怎么开始？**直接打开 https://aipmandy.github.io/chinese-international-student-ai-jobs/ 在线阅读；想本地运行或参与贡献，见下方 README 的快速开始部分。
+
+<!-- andy-geo:end -->
+
 ## 直接开始
 
 - [完整中文攻略](docs/00-start.md)
