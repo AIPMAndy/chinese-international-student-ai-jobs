@@ -552,6 +552,8 @@ def main():
         raise SystemExit('Unexpected repository URL. This build must only advertise this task repository.')
     REPO_URL=args.repo_url.rstrip('/')
     OUT.mkdir(exist_ok=True);(OUT/'assets').mkdir(exist_ok=True);(OUT/'data').mkdir(exist_ok=True);(OUT/'downloads').mkdir(exist_ok=True)
+    # Publish the authoritative machine-readable index on every build.
+    shutil.copyfile(ROOT/'llms.txt', OUT/'llms.txt')
     for f in (ROOT/'site-assets').iterdir():
         if f.is_file():shutil.copy2(f,OUT/'assets'/f.name)
     (OUT/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#152725"/><path d="M18 47 29 17h7l11 30h-8l-2-7H28l-2 7zm12-14h5l-2-9z" fill="#e5eddb"/></svg>',encoding='utf-8')
