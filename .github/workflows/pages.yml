@@ -39,8 +39,6 @@ jobs:
         run: python3 scripts/check_pages_links.py --require downloads/chinese-international-student-ai-jobs-guide.pdf --require downloads/templates.zip --require downloads/chinese-international-student-ai-jobs-source.zip
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Ensure llms.txt in Pages artifact
-        run: cp llms.txt dist/llms.txt
       - name: Upload the verified static site
         uses: actions/upload-pages-artifact@v4
         with:
@@ -95,6 +93,7 @@ jobs:
               ("downloads/chinese-international-student-ai-jobs-source.zip", b"PK\x03\x04"),
               ("sitemap.xml", b"<?xml"),
               ("robots.txt", b"User-agent"),
+              ("llms.txt", b"# "),
               ("assets/style.css", b":root"),
               ("assets/app.js", b""),
           ]
