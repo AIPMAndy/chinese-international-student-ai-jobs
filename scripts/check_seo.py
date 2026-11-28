@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 
@@ -108,6 +109,29 @@ def main():
             errors.append(f'sitemap: {len(set(locs))} URLs != {len(expected)} pages')
     except (OSError, ET.ParseError) as exc:
         errors.append(f'robots/sitemap invalid: {exc}')
+    try:
+        source = (ROOT/'llms.txt').read_bytes()
+        published = (SITE/'llms.txt').read_bytes()
+        if source != published:
+            errors.append('llms.txt differs from authoritative root')
+        index = published.decode('utf-8')
+        links = set(re.findall(r'\]\((https://[^)]+)\)', index))
+        for url in (BASE, BASE+'jobs.html', BASE+'self-check.html', BASE+'downloads/chinese-international-student-ai-jobs-guide.pdf', 'https://metaver.vip/', 'https://www.a6no1.cn/', 'https://metaver.vip/services'):
+            if url not in links:
+                errors.append('llms.txt missing '+url)
+        if '微信：AIPMAndy' not in index:
+            errors.append('llms.txt missing contact')
+        for url in links:
+            if not url.startswith(BASE):
+                continue
+            rel = url[len(BASE):] or 'index.html'
+            target = (SITE/rel).resolve()
+            if not target.is_relative_to(SITE.resolve()) or not target.is_file():
+                errors.append('llms.txt invalid local target '+rel)
+            if rel.endswith('.html') and url not in expected:
+                errors.append('llms.txt HTML target absent from sitemap '+url)
+    except (OSError, UnicodeError) as exc:
+        errors.append(f'llms.txt unavailable or invalid: {exc}')
     homepage = (SITE/'index.html').read_text('utf-8')
     for value in ('AIPMAndy', 'AI酋长Andy', '星觉科技', '北京', 'data-copy', 'https://metaver.vip/', 'https://metaver.vip/services', 'https://www.a6no1.cn/'):
         if value not in homepage: errors.append('homepage missing '+value)
