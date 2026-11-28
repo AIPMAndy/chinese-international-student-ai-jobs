@@ -20,6 +20,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Generate authoritative site and downloadable bundles
         run: |
+          rm -f dist/llms.txt
           python3 scripts/build_site.py --repo-url https://github.com/AIPMAndy/chinese-international-student-ai-jobs
           python3 scripts/package_release.py
           python3 scripts/check_seo.py
